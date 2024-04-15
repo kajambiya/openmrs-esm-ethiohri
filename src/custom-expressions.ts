@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import { getCurrentUser, getLatestObs } from "./api/api";
 import {
-  INTAKE_A_ENCOUNTER_TYPE,
   female,
   kidneyDiseaseStage1,
   kidneyDiseaseStage2,
@@ -218,23 +217,6 @@ export function calcEGFR(patient, weight, creatinineLevel) {
       return kidneyDiseaseStage5;
     }
   }
-}
-
-export async function isEarlierThanConfirmationDate(patient, chosenDate) {
-  const confirmedDate = await getLatestObs(
-    patient.id,
-    "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-    INTAKE_A_ENCOUNTER_TYPE
-  );
-  console.log(
-    `Confirmed date: ${new Date(
-      confirmedDate?.valueDateTime
-    )}  ----  Chosen Date: ${new Date(chosenDate)}`
-  );
-
-  let result = new Date(confirmedDate?.valueDateTime) > new Date(chosenDate);
-  console.log(`IS OLDER THAN CONFIRMED DATE: ${result}`);
-  return await confirmedDate;
 }
 
 export async function isDateAlreadyUsed(

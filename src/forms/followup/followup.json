@@ -306,67 +306,32 @@
 									"calculateExpression": "resolve(api.getLatestObs(patient.id, 'ae329187-6232-4142-aa91-22c85bc8e5b5'))?.valueDateTime"
 								},
 								"rendering": "eth-date",
-								"concept": "ae329187-6232-4142-aa91-22c85bc8e5b5",
-								"weeksList": "",
-								"conceptMappings": [
-									{
-										"type": "AMPATH",
-										"value": "5869"
-									},
-									{
-										"type": "PIH",
-										"value": "2516"
-									},
-									{
-										"type": "PIH-Malawi",
-										"value": "2516"
-									},
-									{
-										"type": "AMPATH",
-										"value": "1499"
-									},
-									{
-										"type": "SNOMED-MVP",
-										"value": "1595991000105005"
-									},
-									{
-										"type": "PIH",
-										"value": "2516"
-									},
-									{
-										"type": "CIEL",
-										"value": "159599"
-									},
-									{
-										"type": "PIH-Malawi",
-										"value": "2516"
-									},
-									{
-										"type": "SNOMED-CT",
-										"value": "413946009"
-									},
-									{
-										"type": "SNOMED-MVP",
-										"value": "1595991000105005"
-									},
-									{
-										"type": "CIEL",
-										"value": "159599"
-									}
-								]
-							},
-							"hide": {
-								"hideWhenExpression": "artStarted != '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+								"concept": "ae329187-6232-4142-aa91-22c85bc8e5b5"
 							},
 							"id": "artStartDate",
 							"validators": [
 								{
 									"type": "js_expression",
-									"failsWhenExpression": "isEarlierThanConfirmationDate(patient, myValue)",
+									"failsWhenExpression": "myValue < new Date(hivConfirmationDate)",
 									"message": "ART started date should not be earlier than HIV Confirmed date"
 								}
 							]
 						},
+						{
+							"label": "HIV confirmation date",
+							"type": "obs",
+							"id": "hivConfirmationDate",
+							"questionOptions": {
+							  "concept": "",
+							  "rendering": "fixed-value",
+							  "calculate": {
+								"calculateExpression": "resolve(api.getLatestObs(patient.id, '160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', '05add044-67f8-48c9-928d-79002ab19efe'))?.valueDateTime"
+							  }
+							},
+							"hide": {
+							  "hideWhenExpression": "true"
+							}
+						  },
 						{
 							"label": "Months on ART",
 							"type": "obs",
@@ -5019,6 +4984,11 @@
 								"concept": "efe20a31-6781-40b7-a4d8-5fc347881e76",
 								"answers": [
 									{
+										"concept": "ace33bc0-b97d-46ff-a979-0056439f7d64",
+										"label": "No OI",
+										"conceptMappings": []
+									},
+									{
 										"concept": "146513AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 										"label": "Oesophageal candidiasis",
 										"conceptMappings": []
@@ -5171,11 +5141,6 @@
 												"value": "5171"
 											}
 										]
-									},
-									{
-										"concept": "ace33bc0-b97d-46ff-a979-0056439f7d64",
-										"label": "No OI",
-										"conceptMappings": []
 									},
 									{
 										"concept": "1294AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -9427,7 +9392,6 @@
 						{
 							"label": "Assessment date *",
 							"type": "obs",
-							"required": "true",
 							"questionOptions": {
 								"rendering": "eth-date",
 								"concept": "78c8abfb-1989-444a-8750-947227f4bde8",
@@ -9438,7 +9402,6 @@
 						{
 							"label": "Assessment status *",
 							"type": "obs",
-							"required": "true",
 							"questionOptions": {
 								"rendering": "radio",
 								"concept": "e6e24c87-d3a0-4a38-bd04-560b13f92298",
@@ -9458,7 +9421,6 @@
 						{
 							"label": "DSD category *",
 							"type": "obs",
-							"required": "true",
 							"questionOptions": {
 								"rendering": "select",
 								"concept": "defeb4ff-d07b-4e4a-bbd6-d4281c1384a2",

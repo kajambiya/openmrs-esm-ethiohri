@@ -36,7 +36,6 @@ import {
   getGender,
   getIdentifier,
   calcEGFR,
-  isEarlierThanConfirmationDate,
   isDateAlreadyUsed,
 } from "./custom-expressions";
 import {
@@ -82,10 +81,6 @@ export function startupApp() {
   registerExpressionHelper("getGender", getGender);
   registerExpressionHelper("getIdentifier", getIdentifier);
   registerExpressionHelper("calcEGFR", calcEGFR);
-  registerExpressionHelper(
-    "isEarlierThanConfirmationDate",
-    isEarlierThanConfirmationDate
-  );
   registerExpressionHelper("isDateAlreadyUsed", isDateAlreadyUsed);
 
   registerControl({
