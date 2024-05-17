@@ -67,6 +67,13 @@ const columns = [
         label: "Edit Intake-B",
         mode: "edit",
       },
+      {
+        form: { name: "POC Intake-B", package: "eth_hiv" },
+        encounterUuid: encounter.uuid,
+        intent: "*",
+        label: "Delete Intake-B",
+        mode: "delete",
+      },
     ],
   },
 ];

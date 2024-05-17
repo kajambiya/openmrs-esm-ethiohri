@@ -72,6 +72,13 @@ const columns = [
         label: "Edit Positive Tracking",
         mode: "edit",
       },
+      {
+        form: { name: "Positive Tracking", package: "eth_hiv" },
+        encounterUuid: encounter.uuid,
+        intent: "*",
+        label: "Delete Positive Tracking",
+        mode: "delete",
+      },
     ],
   },
 ];

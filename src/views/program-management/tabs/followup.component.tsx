@@ -100,6 +100,13 @@ const columns = [
         label: "Edit Followup",
         mode: "edit",
       },
+      {
+        form: { name: "POC Followup Form", package: "eth_hiv" },
+        encounterUuid: encounter.uuid,
+        intent: "*",
+        label: "Delete Followup",
+        mode: "delete",
+      },
     ],
   },
 ];

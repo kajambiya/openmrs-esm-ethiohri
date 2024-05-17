@@ -47,6 +47,13 @@ const columns = [
         label: "Edit PHDP",
         mode: "edit",
       },
+      {
+        form: { name: "POC PHDP Form", package: "eth_hiv" },
+        encounterUuid: encounter.uuid,
+        intent: "*",
+        label: "Delete PHDP",
+        mode: "delete",
+      },
     ],
   },
 ];

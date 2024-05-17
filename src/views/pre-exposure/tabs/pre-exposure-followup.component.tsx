@@ -94,6 +94,13 @@ const columns = [
         label: "Edit Pre Exposure Followup",
         mode: "edit",
       },
+      {
+        form: { name: "Pre Exposure Followup", package: "eth_hiv" },
+        encounterUuid: encounter.uuid,
+        intent: "*",
+        label: "Delete Pre Exposure Followup",
+        mode: "delete",
+      },
     ],
   },
 ];

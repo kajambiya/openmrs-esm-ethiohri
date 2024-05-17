@@ -74,6 +74,13 @@ const columns = [
         label: "Edit HEI Immunization",
         mode: "edit",
       },
+      {
+        form: { name: "HEI Immunization", package: "eth_hiv" },
+        encounterUuid: encounter.uuid,
+        intent: "*",
+        label: "Delete HEI Immunization",
+        mode: "delete",
+      },
     ],
   },
 ];

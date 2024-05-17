@@ -37,6 +37,13 @@ const columns = [
         label: "Edit Mother's Initial Registration",
         mode: "edit",
       },
+      {
+        form: { name: "PMTCT Mother Initial Registration", package: "eth_hiv" },
+        encounterUuid: encounter.uuid,
+        intent: "*",
+        label: "Delete Mother's Initial Registration",
+        mode: "delete",
+      },
     ],
   },
 ];

@@ -37,6 +37,13 @@ const columns = [
         label: "Edit Mother's Discharge",
         mode: "edit",
       },
+      {
+        form: { name: "PMTCT Discharge", package: "eth_hiv" },
+        encounterUuid: encounter.uuid,
+        intent: "*",
+        label: "Delete Mother's Discharge",
+        mode: "delete",
+      },
     ],
   },
 ];

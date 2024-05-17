@@ -70,6 +70,13 @@ const columns = [
         label: "Edit Post Exposure Followup",
         mode: "edit",
       },
+      {
+        form: { name: "Post Exposure Followup", package: "eth_hiv" },
+        encounterUuid: encounter.uuid,
+        intent: "*",
+        label: "Delete Post Exposure Followup",
+        mode: "delete",
+      },
     ],
   },
 ];

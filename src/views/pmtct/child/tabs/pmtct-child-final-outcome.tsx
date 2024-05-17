@@ -38,6 +38,13 @@ const columns = [
         label: "Edit HEI Final Outcome",
         mode: "edit",
       },
+      {
+        form: { name: "HEI Child Final Outcome", package: "eth_hiv" },
+        encounterUuid: encounter.uuid,
+        intent: "*",
+        label: "Delete HEI Final Outcome",
+        mode: "delete",
+      },
     ],
   },
 ];
