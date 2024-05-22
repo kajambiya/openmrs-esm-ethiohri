@@ -74,6 +74,13 @@ const columns = [
         label: "Edit HIV Retest",
         mode: "edit",
       },
+      {
+        form: { name: "Re-test", package: "eth_hiv" },
+        encounterUuid: encounter.uuid,
+        intent: "*",
+        label: "Delete HIV Retest",
+        mode: "delete",
+      },
     ],
   },
 ];

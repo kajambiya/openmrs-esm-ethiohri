@@ -113,6 +113,13 @@ const PMTCTFollowupEncounterList: React.FC<{ patientUuid: string }> = ({
             label: "Edit HEI Followup",
             mode: "edit",
           },
+          {
+            form: { name: "HEI Followup", package: "eth_hiv" },
+            encounterUuid: encounter.uuid,
+            intent: "*",
+            label: "Delete HEI Followup",
+            mode: "delete",
+          },
         ],
       },
     ],

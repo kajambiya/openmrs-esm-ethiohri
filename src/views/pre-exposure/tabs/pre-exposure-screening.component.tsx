@@ -98,6 +98,13 @@ const columns = [
         label: "Edit Pre Exposure Screening",
         mode: "edit",
       },
+      {
+        form: { name: "Prep", package: "eth_hiv" },
+        encounterUuid: encounter.uuid,
+        intent: "*",
+        label: "Delete Pre Exposure Screening",
+        mode: "delete",
+      },
     ],
   },
 ];

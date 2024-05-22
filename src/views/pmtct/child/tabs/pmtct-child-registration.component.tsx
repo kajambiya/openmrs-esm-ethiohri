@@ -66,6 +66,13 @@ const columns = [
         label: "Edit HEI Enrollment",
         mode: "edit",
       },
+      {
+        form: { name: "HEI Enrollment", package: "eth_hiv" },
+        encounterUuid: encounter.uuid,
+        intent: "*",
+        label: "Delete HEI Enrollment",
+        mode: "delete",
+      },
     ],
   },
 ];

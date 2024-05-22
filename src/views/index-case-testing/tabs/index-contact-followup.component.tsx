@@ -60,6 +60,13 @@ const columns = [
         label: "Edit Index Contact Followup",
         mode: "edit",
       },
+      {
+        form: { name: "POC Index Contact Followup", package: "eth_hiv" },
+        encounterUuid: encounter.uuid,
+        intent: "*",
+        label: "Delete Index Contact Followup",
+        mode: "delete",
+      },
     ],
   },
 ];

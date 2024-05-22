@@ -77,6 +77,13 @@ const columns = [
         label: "Edit Family Information",
         mode: "edit",
       },
+      {
+        form: { name: "Family Information", package: "eth_hiv" },
+        encounterUuid: encounter.uuid,
+        intent: "*",
+        label: "Delete Family Information",
+        mode: "delete",
+      },
     ],
   },
 ];

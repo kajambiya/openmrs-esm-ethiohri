@@ -63,6 +63,13 @@ const columns = [
         label: "Edit ICT General",
         mode: "edit",
       },
+      {
+        form: { name: "POC ICT General", package: "eth_hiv" },
+        encounterUuid: encounter.uuid,
+        intent: "*",
+        label: "Delete ICT General",
+        mode: "delete",
+      },
     ],
   },
 ];
