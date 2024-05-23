@@ -18,7 +18,7 @@
 							"required": false,
 							"id": "phdpDate",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "2c4db7e7-1ece-49a6-a075-d466e6d9b27d",
 								"conceptMappings": [],
 								"answers": []

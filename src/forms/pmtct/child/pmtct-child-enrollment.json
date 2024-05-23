@@ -16,7 +16,7 @@
 							"label": "Enrollment Date *",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "1ebc345c-6f09-43e1-a616-d7e52fff4c7d"
 							},
 							"required": "true",
@@ -785,7 +785,7 @@
                 "hideWhenExpression": "mothersPmtct != '1a259ed4-15b5-4e23-8382-972f89be84c8'"
               },
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "ae329187-6232-4142-aa91-22c85bc8e5b5",
                 "conceptMappings": [
                   {

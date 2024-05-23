@@ -16,7 +16,7 @@
 							"label": "Enrollment Date *",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "1ebc345c-6f09-43e1-a616-d7e52fff4c7d"
 							},
 							"required": "true",
@@ -229,7 +229,7 @@
 								"calculate": {
                                     "calculateExpression": "patient.birthDate"
                                 },
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "166575AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 								"weeksList": "",
 								"conceptMappings": [
@@ -803,7 +803,7 @@
 							"label": "Date confirmed HIV+/Retesting",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 								"conceptMappings": [
 									{

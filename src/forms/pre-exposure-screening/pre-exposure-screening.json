@@ -18,7 +18,7 @@
               "required": false,
               "id": "registrationDate",
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "1ebc345c-6f09-43e1-a616-d7e52fff4c7d",
                 "conceptMappings": [],
                 "answers": []
@@ -31,7 +31,7 @@
               "required": false,
               "id": "screeningDate",
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "bd09b775-0294-4775-9615-964d98e06a4f",
                 "conceptMappings": [],
                 "answers": []
@@ -830,7 +830,7 @@
               "required": false,
               "id": "stiTreatmentStartedDate",
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "1428AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                 "conceptMappings": [
                   {
@@ -1443,7 +1443,7 @@
               "required": false,
               "id": "prepStartDate",
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "163526AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                 "conceptMappings": [
                   {

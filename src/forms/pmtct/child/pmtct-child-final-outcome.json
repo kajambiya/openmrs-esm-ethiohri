@@ -59,7 +59,7 @@
               "required": false,
               "id": "dateOfFinalOutcome",
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "e83fbaa5-073b-4a6d-b8ba-23f41d0c7302"
               }
             }
@@ -131,7 +131,7 @@
               "required": false,
               "id": "referredDate",
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "161561AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                 "conceptMappings": [
                   {

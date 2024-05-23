@@ -18,7 +18,7 @@
               "required": "true",
 							"id": "followupDate",
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "5c118396-52dc-4cac-8860-e6d8e4a7f296",
                 "conceptMappings": [],
                 "answers": []
@@ -337,7 +337,7 @@
               "required": false,
               "id": "lmp",
               "questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "30d8d278-5ace-4d01-b2f1-8efc28372070",
 								"weeksList": ""
 							},
@@ -352,7 +352,7 @@
               "required": false,
               "id": "edd",
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "5596AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                 "conceptMappings": [
                   {
@@ -1026,7 +1026,7 @@
               "id": "prepDoseEndDate",
               "readonly": "true",
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "1dcc457b-638c-4103-887b-4e8581e052f8",
                 "calculate": {
 									"calculateExpression": "CustomTreatmentEndDateCalc('followupDate','arvDispensedInDays', 'followupStatus')"
@@ -1133,7 +1133,7 @@
 								"calculate": {
 									"calculateExpression": "CustomNextVisitDateCalc('followupDate','arvDispensedInDays')"
 								},
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "c596f199-4d76-4eca-b3c4-ffa631c0aee9",
 								"weeksList": ""
 							},

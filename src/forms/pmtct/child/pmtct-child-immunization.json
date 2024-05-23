@@ -43,7 +43,7 @@
                 "hideWhenExpression": "bcg != '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
               },
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "f056ec09-ef1a-4675-bbaa-4433f05550c1",
                 "conceptMappings": [],
                 "answers": []
@@ -81,7 +81,7 @@
                 "hideWhenExpression": "ipv != '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
               },
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "237ae1a9-5009-44d5-9561-28c7e0ec8f00",
                 "conceptMappings": [],
                 "answers": []
@@ -125,7 +125,7 @@
                 "hideWhenExpression": "opv0 != '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
               },
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "34f667f5-f691-4f40-8f6c-00a686ed32a4",
                 "conceptMappings": [],
                 "answers": []
@@ -163,7 +163,7 @@
                 "hideWhenExpression": "opv1 != '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
               },
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "01b023ae-c0b7-41aa-a742-4f6b8c4dd19c",
                 "conceptMappings": [],
                 "answers": []
@@ -201,7 +201,7 @@
                 "hideWhenExpression": "opv2 != '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
               },
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "14dc1720-d276-48ff-966a-35650328e753",
                 "conceptMappings": [],
                 "answers": []
@@ -239,7 +239,7 @@
                 "hideWhenExpression": "opv3 != '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
               },
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "f309eec5-1d37-4c68-a61e-5c8482b0e968",
                 "conceptMappings": [],
                 "answers": []
@@ -283,7 +283,7 @@
                 "hideWhenExpression": "penta1 != '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
               },
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "1d20ba5b-0ce6-4269-8a36-be3b9edd8657",
                 "conceptMappings": [],
                 "answers": []
@@ -321,7 +321,7 @@
                 "hideWhenExpression": "penta2 != '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
               },
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "7a300cab-94c2-412b-bfc2-ae183b4a662b",
                 "conceptMappings": [],
                 "answers": []
@@ -359,7 +359,7 @@
                 "hideWhenExpression": "penta3 != '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
               },
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "1329fa59-c00c-4a0c-83ed-3ca470ab07f8",
                 "conceptMappings": [],
                 "answers": []
@@ -403,7 +403,7 @@
                 "hideWhenExpression": "rota0 != '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
               },
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "31ec6e43-a240-4940-b915-6013850836b8",
                 "conceptMappings": [],
                 "answers": []
@@ -441,7 +441,7 @@
                 "hideWhenExpression": "rota1 != '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
               },
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "f4a2918e-dc25-4b24-998a-8536b3ec1590",
                 "conceptMappings": [],
                 "answers": []
@@ -479,7 +479,7 @@
                 "hideWhenExpression": "rota2 != '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
               },
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "d0dfb8f5-9762-4be1-a138-40828771540b",
                 "conceptMappings": [],
                 "answers": []
@@ -523,7 +523,7 @@
                 "hideWhenExpression": "pcv0 != '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
               },
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "7ac09edd-b001-4166-be6b-b698f66122cd",
                 "conceptMappings": [],
                 "answers": []
@@ -561,7 +561,7 @@
                 "hideWhenExpression": "pcv1 != '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
               },
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "2046d321-cb6d-4e20-83c5-b4d675edc1fb",
                 "conceptMappings": [],
                 "answers": []
@@ -599,7 +599,7 @@
                 "hideWhenExpression": "pcv2 != '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
               },
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "c6db2ee8-b037-4ed2-bd88-c0c3d6b8569a",
                 "conceptMappings": [],
                 "answers": []
@@ -637,7 +637,7 @@
                 "hideWhenExpression": "pcv3 != '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
               },
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "fa204f55-f951-49e9-b8a4-36ddbef88b22",
                 "conceptMappings": [],
                 "answers": []
@@ -681,7 +681,7 @@
                 "hideWhenExpression": "mcv1 != '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
               },
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "dcaf501f-49bb-49cb-b8c2-12197fab1fd3",
                 "conceptMappings": [],
                 "answers": []
@@ -719,7 +719,7 @@
                 "hideWhenExpression": "mcv2 != '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
               },
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "4e3b05b4-24e6-4fd8-8926-94717507b65c",
                 "conceptMappings": [],
                 "answers": []

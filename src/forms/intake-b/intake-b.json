@@ -226,7 +226,7 @@
 				"label": "Cotrimoxazole started date",
 				"type": "obs",
 				"questionOptions": {
-				  "rendering": "eth-date",
+				  "rendering": "date",
 				  "concept": "164361AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 				  "weeksList": ""
 				},
@@ -236,7 +236,7 @@
 				"label": "Cotrimoxazole stopped date",
 				"type": "obs",
 				"questionOptions": {
-				  "rendering": "eth-date",
+				  "rendering": "date",
 				  "concept": "164362AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 				  "weeksList": ""
 				},
@@ -246,7 +246,7 @@
 				"label": "TPT started date",
 				"type": "obs",
 				"questionOptions": {
-				  "rendering": "eth-date",
+				  "rendering": "date",
 				  "concept": "d94d9408-837e-44bb-a7de-84007d08bd83",
 				  "weeksList": ""
 				},
@@ -256,7 +256,7 @@
 				"label": "TPT completed date",
 				"type": "obs",
 				"questionOptions": {
-				  "rendering": "eth-date",
+				  "rendering": "date",
 				  "concept": "e9048636-538a-4c73-9fd7-9e2e98a43281"
 				},
 				"id": "inhCompletedDate"
@@ -265,7 +265,7 @@
 				"label": "Fluconazole Preventive Therapy (FPT) started date",
 				"type": "obs",
 				"questionOptions": {
-				  "rendering": "eth-date",
+				  "rendering": "date",
 				  "concept": "5ac4300a-5e19-45c8-8692-31a57d6d5b8c",
 				  "conceptMappings": [
 					{
@@ -280,7 +280,7 @@
 				"label": "Fluconazole Preventive Therapy (FPT) completed date",
 				"type": "obs",
 				"questionOptions": {
-				  "rendering": "eth-date",
+				  "rendering": "date",
 				  "concept": "c2d57bcb-02f2-457d-af05-8d759a1457a7",
 				  "conceptMappings": [
 					{
@@ -1158,7 +1158,7 @@
 				"label": "ART Start date",
 				"type": "obs",
 				"questionOptions": {
-				  "rendering": "eth-date",
+				  "rendering": "date",
 				  "concept": "ae329187-6232-4142-aa91-22c85bc8e5b5",
 				  "weeksList": ""
 				},
@@ -1884,7 +1884,7 @@
 				"label": "LMP",
 				"type": "obs",
 				"questionOptions": {
-				  "rendering": "eth-date",
+				  "rendering": "date",
 				  "concept": "30d8d278-5ace-4d01-b2f1-8efc28372070",
 				  "weeksList": ""
 				},
@@ -1897,7 +1897,7 @@
 				"label": "EDD",
 				"type": "obs",
 				"questionOptions": {
-				  "rendering": "eth-date",
+				  "rendering": "date",
 				  "calculate": {
 					"calculateExpression": "calcEDD('LMP')"
 				  },

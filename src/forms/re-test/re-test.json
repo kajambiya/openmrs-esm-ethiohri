@@ -58,25 +58,6 @@
 							"id": "referralType"
 						},
 						{
-							"label": "Referred from",
-							"type": "obs",
-							"questionOptions": {
-								"rendering": "text",
-								"concept": "161550AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-								"conceptMappings": [
-									{
-										"type": "SNOMED-CT",
-										"value": "397670001"
-									},
-									{
-										"type": "CIEL",
-										"value": "161550"
-									}
-								]
-							},
-							"id": "referredFrom"
-						},
-						{
 							"label": "Entry point",
 							"type": "obs",
 							"required": false,
@@ -214,7 +195,7 @@
 							"label": "Date of initial test",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "9182520e-24e8-4e84-aba7-6b56bdeb76d5",
 								"weeksList": ""
 							},
@@ -224,7 +205,7 @@
 							"label": "Date of retesting",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "3c588dc4-cd32-47e6-a919-806e254b66c7",
 								"weeksList": ""
 							},
@@ -258,7 +239,7 @@
 							"label": "Expiry date",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "a9f3dbfc-b65d-4cd4-9c65-c52df1f9b65c",
 								"weeksList": ""
 							},
@@ -362,7 +343,7 @@
 							"label": "Expiry date",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "06c4fcee-880f-40ce-89e2-b0958a8cea6d",
 								"weeksList": ""
 							},
@@ -466,7 +447,7 @@
 							"label": "Expiry date",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "4e596473-d730-4535-875c-895d5f20b4c0",
 								"weeksList": ""
 							},
@@ -801,7 +782,7 @@
 							"label": "Expiry date",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "162502AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 								"weeksList": "",
 								"conceptMappings": [
@@ -857,7 +838,7 @@
 							"label": "ART start date",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "ae329187-6232-4142-aa91-22c85bc8e5b5",
 								"weeksList": "",
 								"conceptMappings": [

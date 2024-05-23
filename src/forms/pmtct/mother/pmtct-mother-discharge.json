@@ -17,7 +17,7 @@
                   "calculate": {
                     "calculateExpression": "resolve(api.getLatestObs(patient.id, '0fe4faee-0717-4dc0-be3d-1cd52923804a', '0f108867-410d-4479-8375-2c85f218027c'))?.valueDateTime"
                   },
-                  "rendering": "eth-date",
+                  "rendering": "date",
                   "concept": "0fe4faee-0717-4dc0-be3d-1cd52923804a",
                   "conceptMappings": [],
                   "answers": []
@@ -60,7 +60,7 @@
                 "required": false,
                 "id": "dischargeDate",
                 "questionOptions": {
-                  "rendering": "eth-date",
+                  "rendering": "date",
                   "concept": "18f78400-d91c-40ea-bd9f-4388c10d50c1",
                   "conceptMappings": [],
                   "answers": []

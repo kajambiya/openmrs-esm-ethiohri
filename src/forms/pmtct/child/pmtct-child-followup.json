@@ -18,7 +18,7 @@
               "required": false,
               "id": "followupDate",
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "5c118396-52dc-4cac-8860-e6d8e4a7f296",
                 "conceptMappings": [],
                 "answers": []
@@ -596,7 +596,7 @@
               "required": false,
               "id": "dateOfSampleCollectionDate",
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "159951AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                 "conceptMappings": [
                   {
@@ -691,7 +691,7 @@
               "required": false,
               "id": "dateOfDBSReferral",
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "161561AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                 "conceptMappings": [
                   {
@@ -710,7 +710,7 @@
               "required": false,
               "id": "dateOfDbsResultReceivedBack",
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "ec2f989b-bdf8-4abe-8601-dc7a99d000eb",
                 "conceptMappings": [],
                 "answers": []
@@ -729,7 +729,7 @@
               "required": false,
               "id": "dateSampleReceived",
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "e724050c-cd85-4405-94a0-7a8e3b082d58",
                 "conceptMappings": [],
                 "answers": []
@@ -775,7 +775,7 @@
               "required": false,
               "id": "dateTestPerformed",
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "164400AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                 "conceptMappings": [
                   {
@@ -1117,7 +1117,7 @@
               "required": false,
               "id": "nextVisitDate",
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "c596f199-4d76-4eca-b3c4-ffa631c0aee9",
                 "conceptMappings": [],
                 "answers": []
