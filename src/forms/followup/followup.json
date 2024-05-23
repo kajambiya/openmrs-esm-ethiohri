@@ -1,6 +1,6 @@
 {
 	"name": "POC Followup Form",
-	"version": "2.0",
+	"version": "1.0",
 	"published": true,
 	"retired": false,
 	"encounter": "Follow Up",
@@ -1203,6 +1203,7 @@
 							"type": "obs",
 							"questionOptions": {
 								"rendering": "radio",
+								"unspecified": true,
 								"concept": "2c5b553b-58f8-4462-b14e-0a6a6628a790",
 								"calculate": {
 									"calculateExpression": "CustomNutritionalScreeningCalc('height','weight')"
@@ -3425,7 +3426,10 @@
 									}
 								]
 							},
-							"id": "specimenSent"
+							"id": "specimenSent",
+							"hide": {
+								"hideWhenExpression": "tbScreened !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+							}
 						},
 						{
 							"label": "LF-LAM result",
@@ -7676,15 +7680,15 @@
 				{
 					"label": "ARV Drugs",
 					"isExpanded": "true",
+					"hide": {
+						"hideWhenExpression": "followupStatus !== '159492AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || followupStatus !== '1260AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || followupStatus !== '27e28afa-b4a6-44e0-b331-ea7250121a0e' || followupStatus !== '160431AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || followupStatus !== '160432AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+					},
 					"questions": [
 						{
 							"label": "Dispense code *",
 							"type": "obs",
 							"required": true,
 							"id": "dispenseCode",
-							"hide": {
-								"hideWhenExpression": "followupStatus !== '160429AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && followupStatus !== '162904AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-							},
 							"questionOptions": {
 							  "rendering": "select",
 							  "concept": "6d7d0327-e1f8-4246-bfe5-be1e82d94b14",
@@ -7996,9 +8000,6 @@
 									}
 								  ]
 							},
-							"hide": {
-								"hideWhenExpression": "followupStatus !== '160429AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && followupStatus !== '162904AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-							},
 							"id": "arvDispensedInDays"
 						},
 						{
@@ -8283,9 +8284,6 @@
 									}
 								]
 							},
-							"hide": {
-								"hideWhenExpression": "followupStatus !== '160429AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && followupStatus !== '162904AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-							},
 							"id": "arvSideEffects"
 						},
 						{
@@ -8306,9 +8304,6 @@
 										"conceptMappings": []
 									}
 								]
-							},
-							"hide": {
-								"hideWhenExpression": "followupStatus !== '160429AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && followupStatus !== '162904AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
 							},
 							"id": "regimenChange"
 						},
