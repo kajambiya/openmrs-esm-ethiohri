@@ -1,6 +1,6 @@
 {
     "name": "POC Index Contact Followup",
-    "version": "1.0",
+    "version": "2.0",
     "published": true,
     "retired": false,
     "encounter": "Index Contact Followup",
@@ -23,7 +23,7 @@
                           "required": false,
                           "id": "elicitedDate",
                           "questionOptions": {
-                              "rendering": "eth-date",
+                              "rendering": "date",
                               "concept": "58abd286-8f57-4717-aa41-efd8e93d5902",
                               "conceptMappings": [],
                               "answers": []
@@ -230,7 +230,7 @@
                           "required": false,
                           "id": "currentTestDate",
                           "questionOptions": {
-                              "rendering": "eth-date",
+                              "rendering": "date",
                               "concept": "76b355ac-5708-4e2e-ab5c-7b21d5c62405",
                               "conceptMappings": [],
                               "answers": []
@@ -570,7 +570,7 @@
                               "hideWhenExpression": "testedBefore !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                           },
                           "questionOptions": {
-                              "rendering": "eth-date",
+                              "rendering": "date",
                               "concept": "67e5e461-c1bd-44fc-8b74-5929a388df9a",
                               "conceptMappings": [],
                               "answers": []
@@ -582,7 +582,7 @@
                           "required": false,
                           "id": "hivstKit",
                           "questionOptions": {
-                              "rendering": "eth-date",
+                              "rendering": "date",
                               "concept": "947073ef-aa76-42cb-a361-1641149a8100",
                               "conceptMappings": [],
                               "answers": []
@@ -615,7 +615,7 @@
                           "required": false,
                           "id": "hivstReportDate",
                           "questionOptions": {
-                              "rendering": "eth-date",
+                              "rendering": "date",
                               "concept": "70e43194-c463-444d-a631-db938fbc1bdc",
                               "conceptMappings": [],
                               "answers": []
@@ -684,7 +684,7 @@
                           },
                           "id": "dateOralPrepStarted",
                           "questionOptions": {
-                              "rendering": "eth-date",
+                              "rendering": "date",
                               "concept": "5810b330-1003-4619-9e4f-c8a1f25fd12c",
                               "conceptMappings": [],
                               "answers": []

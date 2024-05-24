@@ -1,6 +1,6 @@
 {
 	"name": "Exposed Person Information",
-	"version": "1.0",
+	"version": "2.0",
 	"published": true,
 	"retired": false,
 	"encounter": "Exposed Person Information",
@@ -128,7 +128,7 @@
 							"label": "Reporting date",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "4285d9e8-3ab4-4a94-bd4e-4dd92855795c",
 								"weeksList": ""
 							},

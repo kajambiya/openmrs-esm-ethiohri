@@ -12,27 +12,16 @@ import {
   ninety,
   oneHundredEighty,
   oneHundredTwenty,
+  oneHundredFifty,
   sixty,
   thirty,
-  five,
-  ten,
   fifteen,
-  twenty,
-  twentyFive,
 } from "./constants";
 
 export function DispensedDoseInNumber(arvDispensedInDays: string) {
   switch (arvDispensedInDays) {
-    case five:
-      return 5;
-    case ten:
-      return 10;
     case fifteen:
       return 15;
-    case twenty:
-      return 20;
-    case twentyFive:
-      return 25;
     case thirty:
       return 30;
     case sixty:
@@ -41,6 +30,8 @@ export function DispensedDoseInNumber(arvDispensedInDays: string) {
       return 90;
     case oneHundredTwenty:
       return 120;
+    case oneHundredFifty:
+      return 150;
     case oneHundredEighty:
       return 180;
     default:
@@ -107,8 +98,10 @@ export function CalcMonthsOnART(artStartDate: Date) {
 export function CalcViralLoadStatus(viralLoadCount: number) {
   let resultViralLoadStatus: string;
   if (viralLoadCount) {
-    if (viralLoadCount <= 50) {
+    if (viralLoadCount == 0) {
       resultViralLoadStatus = "167484AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+    } else if (viralLoadCount <= 50) {
+      resultViralLoadStatus = "167378AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
     } else if (viralLoadCount >= 51 && viralLoadCount <= 1000) {
       resultViralLoadStatus = "167378AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
     } else if (viralLoadCount > 1000) {

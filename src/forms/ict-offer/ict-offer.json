@@ -1,6 +1,6 @@
 {
     "name": "POC ICT Offer",
-    "version": "1.0",
+    "version": "2.0",
     "published": true,
     "retired": false,
     "encounter": "ICT Offer",
@@ -47,7 +47,7 @@
                             },
                             "id": "offeredDate",
                             "questionOptions": {
-                                "rendering": "eth-date",
+                                "rendering": "date",
                                 "concept": "a7c606b1-9f3e-4095-815a-3a623dc738e1",
                                 "conceptMappings": [],
                                 "answers": []
@@ -131,7 +131,7 @@
                             },
                             "id": "acceptedDate",
                             "questionOptions": {
-                                "rendering": "eth-date",
+                                "rendering": "date",
                                 "concept": "da8e65a1-04ee-44a0-be4b-d2bc4f002aa4",
                                 "conceptMappings": [],
                                 "answers": []

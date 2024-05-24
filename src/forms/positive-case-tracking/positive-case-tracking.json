@@ -1,6 +1,6 @@
 {
 	"name": "Positive Tracking",
-	"version": "1.0",
+	"version": "2.0",
 	"published": true,
 	"retired": false,
 	"encounter": "Positive Tracking",
@@ -170,24 +170,28 @@
 								  "label": "HIV exposed infant program"
 								},
 								{
-								  "concept": "f0152d8f-5dae-4598-ba92-000952a3f436",
-								  "label": "Index case testing children"
+									"concept": "160546AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+									"label": "STI"
 								},
 								{
-								  "concept": "974ef745-16f5-439f-a4e5-e78135eca5ed",
-								  "label": "Index case testing partners"
+									"concept": "160460AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+									"label": "Dermatology"
 								},
 								{
-								  "concept": "5485AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-								  "label": "Inpatient care or hospitalization"
+									"concept": "2309a42c-1e6c-489e-927e-ba6738ce5683",
+									"label": "Pedi OPD 1"
+								  },
+								  {
+									"concept": "3b221bcb-77d6-4868-bad5-fda94b37ab4b",
+									"label": "Pedi OPD 2"
 								},
 								{
-								  "concept": "d1e97037-c599-47c3-93cb-c256b9c27fbc",
-								  "label": "L&D Client"
+									"concept": "115122AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+									"label": "Malnutrition"
 								},
 								{
-								  "concept": "b939ea35-5e85-4d5b-9443-a823645b7446",
-								  "label": "L&D Partner"
+									"concept": "e7e85a1a-1e45-4043-99d7-216034965bc5",
+									"label": "Other OPD"
 								},
 								{
 								  "concept": "115122AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -262,12 +266,16 @@
 								  "label": "Pediatric OPD 2"
 								},
 								{
-								  "concept": "14497d04-ec43-4ac4-9cab-02007a0ff273",
-								  "label": "PNC Client"
+								  "concept": "7f56577d-b09b-43b9-be0c-78ef81470c83",
+								  "label": "ANC partner"
 								},
 								{
-								  "concept": "661a2141-4476-4ec9-b35b-3bceec16f044",
-								  "label": "PNC Partner"
+									"concept": "d1e97037-c599-47c3-93cb-c256b9c27fbc",
+									"label": "L&D Client"
+								  },
+								  {
+									"concept": "b939ea35-5e85-4d5b-9443-a823645b7446",
+									"label": "L&D Partner"
 								},
 								{
 								  "concept": "160538AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -278,20 +286,24 @@
 								  "label": "Sexually transmitted infection program/clinic"
 								},
 								{
-								  "concept": "af37cab4-73ad-49ff-b9d7-2a89d54d7118",
-								  "label": "TB Clinic"
+									"concept": "46c6d199-e290-4dc8-bc48-e050392ebd18",
+									"label": "Gyn Ward"
 								},
 								{
-								  "concept": "160541AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-								  "label": "Tuberculosis treatment program"
+									"concept": "93057ed0-7069-4e9a-9918-ae3dbe6ae5f2",
+									"label": "Other ward (newly added)"
 								},
 								{
-								  "concept": "159940AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-								  "label": "Voluntary counseling and testing center"
+									"concept": "f0152d8f-5dae-4598-ba92-000952a3f436",
+									"label": "Index case testing children"
+								  },
+								  {
+									"concept": "974ef745-16f5-439f-a4e5-e78135eca5ed",
+									"label": "Index case testing partners"
 								},
 								{
-								  "concept": "163628AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-								  "label": "voluntary testing and counselling panel"
+									"concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+									"label": "Other"
 								}
 							  ]
 							},

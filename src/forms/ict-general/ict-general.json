@@ -1,6 +1,6 @@
 {
     "name": "POC ICT General",
-    "version": "1.0",
+    "version": "2.0",
     "published": true,
     "retired": false,
     "encounter": "ICT General",
@@ -428,7 +428,7 @@
                             "required": false,
                             "id": "hivTestDate",
                             "questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 								"conceptMappings": [
 									{
@@ -514,7 +514,7 @@
                                 "calculate": {
 									"calculateExpression": "resolve(api.getLatestObs(patient.id, 'ae329187-6232-4142-aa91-22c85bc8e5b5', 'dc94a223-66bc-45b7-8e34-d13b8686f239'))?.valueDateTime"
 								},
-                                "rendering": "eth-date",
+                                "rendering": "date",
                                 "concept": "ae329187-6232-4142-aa91-22c85bc8e5b5",
                                 "conceptMappings": [
                                     {

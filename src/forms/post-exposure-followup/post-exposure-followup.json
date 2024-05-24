@@ -1,6 +1,6 @@
 {
 	"name": "Post Exposure Followup",
-	"version": "1.0",
+	"version": "2.0",
 	"published": true,
 	"retired": false,
 	"encounter": "Post Exposure Followup",
@@ -19,7 +19,7 @@
 						"calculate": {
 							"calculateExpression": "resolve(api.getLatestObs(patient.id, '4285d9e8-3ab4-4a94-bd4e-4dd92855795c', 'de4cef7c-0aca-4593-9b5f-64a51c841c9d'))?.valueDateTime"
 						},
-						"rendering": "eth-date",
+						"rendering": "date",
 						"concept": "4285d9e8-3ab4-4a94-bd4e-4dd92855795c",
 						"weeksList": ""
 					},
@@ -29,7 +29,7 @@
 				"label": "Visit date",
 				"type": "obs",
 				"questionOptions": {
-				  "rendering": "eth-date",
+				  "rendering": "date",
 				  "concept": "163260AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 				  "weeksList": "",
 				  "conceptMappings": [

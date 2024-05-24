@@ -300,6 +300,10 @@
 						{
 							"label": "ART start date",
 							"type": "obs",
+							"id": "artStartDate",
+							"hide": {
+								"hideWhenExpression": "artStarted !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+							},
 							"questionOptions": {
 								"calculate": {
 									"calculateExpression": "resolve(api.getLatestObs(patient.id, 'ae329187-6232-4142-aa91-22c85bc8e5b5'))?.valueDateTime"
@@ -307,7 +311,6 @@
 								"rendering": "date",
 								"concept": "ae329187-6232-4142-aa91-22c85bc8e5b5"
 							},
-							"id": "artStartDate",
 							"validators": [
 								{
 									"type": "js_expression",
@@ -363,50 +366,54 @@
 							  "conceptMappings": [],
 							  "answers": [
 								{
+									"concept": "93bdee94-e934-4612-b749-eced1a2a8670",
+									"label": "Select All Observations"
+								},
+								{
 								  "concept": "d7098e8d-601f-472c-8914-0632930818a8",
-								  "label": "Nutrition observation"
+								  "label": "Nutrition"
 								},
 								{
 								  "concept": "53b2f5a8-0478-44c9-9507-d397b174be7f",
-								  "label": "Pregnancy and family information observation",
+								  "label": "Pregnancy & Family Information",
 								  "hide": {
 									"hideWhenExpression": "patient.gender === 'male'"
 								}
 								},
 								{
 								  "concept": "246831e5-65e8-411f-aac9-57adcc4fb12c",
-								  "label": "TB screening observation"
+								  "label": "TB Screening"
 								},
 								{
 								  "concept": "3150e1a6-2d57-43f8-8e35-8b36fcbdceb3",
-								  "label": "OI and pain management observation"
+								  "label": "OI and Pain Management"
 								},
 								{
 								  "concept": "42ca808f-4231-46f6-90a4-80ff22cb3aa2",
-								  "label": "Lab results observation"
+								  "label": "Lab Results"
 								},
 								{
 								  "concept": "98ed68a9-9596-45dc-8015-2289a969c6fe",
-								  "label": "Cotrimoxazole preventive therapy observation"
+								  "label": "Cotrimoxazole Preventive Therapy"
 								},
 								{
 								"hide": {
 										"hideWhenExpression": "artStarted !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
 									},
 								  "concept": "2889d127-3b82-4978-ad2a-97ddf16bcc81",
-								  "label": "ARV drugs observation"
+								  "label": "ARV Drugs"
 								},
 								{
 								  "concept": "773f6394-47ca-4bfc-bd29-ebfdafc9916d",
-								  "label": "HIV prevention plan observation"
+								  "label": "HIV Prevention Plan"
 								},
 								{
 								  "concept": "98b00c1a-d81c-4648-be6f-86793d0ae23f",
-								  "label": "DSD observation"
+								  "label": "DSD"
 								},
 								{
 								  "concept": "23ad6d16-d8a5-46fa-ac98-dfab4db06d1a",
-								  "label": "Cervical cancer observation"
+								  "label": "Cervical Cancer"
 								}
 							  ]
 							},
@@ -490,7 +497,7 @@
 							"label": "Height (in cm) for Adult",
 							"type": "obs",
 							"hide": {
-								"hideWhenExpression": "age < 5"
+								"hideWhenExpression": "age <= 4"
 							},
 							"questionOptions": {
 								"calculate": {
@@ -507,6 +514,7 @@
 						{
 							"label": "BMI (kg/m)",
 							"type": "obs",
+							"readonly": "true",
 							"questionOptions": {
 								"calculate": {
 									"calculateExpression": "Math.round(calcBMI('height','weight'))"
@@ -518,7 +526,7 @@
 								"showDate": ""
 							},
 							"hide": {
-								"hideWhenExpression": "age < 5"
+								"hideWhenExpression": "age <= 17"
 							},
 							"id": "bmi"
 						},
@@ -650,7 +658,7 @@
 								]
 							},
 							"hide": {
-								"hideWhenExpression": "age < 5 || age > 18"
+								"hideWhenExpression": "age <= 4 || age >= 18"
 							},
 							"id": "bmiForAge"
 						},
@@ -830,7 +838,7 @@
 								]
 							},
 							"hide": {
-								"hideWhenExpression": "age < 18"
+								"hideWhenExpression": "age <= 17"
 							},
 							"id": "nutritionalStatusOfAdult"
 						},
@@ -1002,7 +1010,7 @@
 								]
 							},
 							"hide": {
-								"hideWhenExpression": "age < 5 || age > 18"
+								"hideWhenExpression": "age <= 4 || age >= 17"
 							},
 							"id": "nutritionalStatusOfOlderChild"
 						},
@@ -1188,7 +1196,7 @@
 								]
 							},
 							"hide": {
-								"hideWhenExpression": "age > 5"
+								"hideWhenExpression": "age >= 4"
 							},
 							"id": "nutritionalStatusOfChild"
 						},
@@ -1197,6 +1205,7 @@
 							"type": "obs",
 							"questionOptions": {
 								"rendering": "radio",
+								"unspecified": true,
 								"concept": "2c5b553b-58f8-4462-b14e-0a6a6628a790",
 								"calculate": {
 									"calculateExpression": "CustomNutritionalScreeningCalc('height','weight')"
@@ -3192,9 +3201,6 @@
 							"label": "TB screening date",
 							"type": "obs",
 							"questionOptions": {
-								"calculate": {
-									"calculateExpression": "followupDate"
-								},
 								"rendering": "date",
 								"concept": "179497a0-6f07-469f-bb2e-9b85644a82af",
 								"weeksList": ""
@@ -3422,7 +3428,10 @@
 									}
 								]
 							},
-							"id": "specimenSent"
+							"id": "specimenSent",
+							"hide": {
+								"hideWhenExpression": "tbScreened !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+							}
 						},
 						{
 							"label": "LF-LAM result",
@@ -3682,9 +3691,6 @@
 										]
 									}
 								]
-							},
-							"hide": {
-								"hideWhenExpression": "screeningResult !== '703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
 							},
 							"id": "activeTB"
 						},
@@ -4603,12 +4609,12 @@
 								  "label": "90"
 								},
 								{
-								  "concept": "e5f7cc4d-922a-4838-8c75-af9bdbb59bc8",
-								  "label": "180"
+									"concept": "684c450f-878b-4b96-ab1b-2b539c30f033",
+									"label": "120"
 								},
 								{
-								  "concept": "684c450f-878b-4b96-ab1b-2b539c30f033",
-								  "label": "120"
+								  "concept": "e5f7cc4d-922a-4838-8c75-af9bdbb59bc8",
+								  "label": "180"
 								}
 							  ]
 							},
@@ -4676,78 +4682,122 @@
 							"id": "dateTptDiscontinued"
 						},
 						{
+							"label": "Are there any side effects for TPT drugs?",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "radio",
+								"concept": "2705e6f9-960c-4d8c-be78-2929a8ee418d",
+								"answers": [
+									{
+										"concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+										"label": "Yes",
+										"conceptMappings": [
+											{
+												"type": "SNOMED-CT",
+												"value": "373066001"
+											},
+											{
+												"type": "PIH",
+												"value": "1065"
+											},
+											{
+												"type": "PIH",
+												"value": "1065"
+											},
+											{
+												"type": "AMPATH",
+												"value": "1065"
+											},
+											{
+												"type": "CIEL",
+												"value": "1065"
+											},
+											{
+												"type": "CIEL",
+												"value": "1065"
+											},
+											{
+												"type": "PIH-Malawi",
+												"value": "1065"
+											},
+											{
+												"type": "CIEL",
+												"value": "1065"
+											},
+											{
+												"type": "SNOMED-CT",
+												"value": "373066001"
+											},
+											{
+												"type": "SNOMED CT",
+												"value": "CT: 373066001"
+											},
+											{
+												"type": "PIH-Malawi",
+												"value": "1065"
+											},
+											{
+												"type": "AMPATH",
+												"value": "1065"
+											}
+										]
+									},
+									{
+										"concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+										"label": "No",
+										"conceptMappings": [
+											{
+												"type": "PIH",
+												"value": "1066"
+											},
+											{
+												"type": "SNOMED-CT",
+												"value": "373067005"
+											},
+											{
+												"type": "PIH",
+												"value": "1066"
+											},
+											{
+												"type": "PIH-Malawi",
+												"value": "1066"
+											},
+											{
+												"type": "CIEL",
+												"value": "1066"
+											},
+											{
+												"type": "AMPATH",
+												"value": "1066"
+											},
+											{
+												"type": "SNOMED-CT",
+												"value": "373067005"
+											},
+											{
+												"type": "PIH-Malawi",
+												"value": "1066"
+											},
+											{
+												"type": "AMPATH",
+												"value": "1066"
+											}
+										]
+									}
+								]
+							},
+							"id": "anySideEffectsForTPT",
+							"hide": {
+								"hideWhenExpression": "screeningResult !== '5e4fc757-0b14-49ae-b3b7-419666f41e15'"
+							}
+						},
+						{
 							"label": "Side effects for TPT drugs",
 							"type": "obs",
 							"questionOptions": {
 								"rendering": "checkbox",
 								"concept": "87174948-2998-47b5-a551-64ea23ab9862",
 								"answers": [
-									{
-										"concept": "1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-										"label": "No side effects",
-										"conceptMappings": [
-											{
-												"type": "HL7-ActSubstanceAdminSubstitutionCode",
-												"value": "N"
-											},
-											{
-												"type": "CIEL",
-												"value": "1107"
-											},
-											{
-												"type": "ANC-DAK",
-												"value": "ANC.B8.DE28"
-											},
-											{
-												"type": "AMPATH",
-												"value": "1107"
-											},
-											{
-												"type": "PIH-Malawi",
-												"value": "1107"
-											},
-											{
-												"type": "ANC-DAK",
-												"value": "ANC.B5.DE49"
-											},
-											{
-												"type": "PIH",
-												"value": "1107"
-											},
-											{
-												"type": "SNOMED-CT",
-												"value": "260413007"
-											},
-											{
-												"type": "PIH",
-												"value": "1107"
-											},
-											{
-												"type": "org.openmrs.module.mdrtb",
-												"value": "NONE"
-											},
-											{
-												"type": "PIH-Malawi",
-												"value": "1107"
-											},
-											{
-												"type": "AMPATH",
-												"value": "1107"
-											},
-											{
-												"type": "SNOMED-CT",
-												"value": "260413007"
-											},
-											{
-												"type": "org.openmrs.module.mdrtb",
-												"value": "NONE"
-											},
-											{
-												"type": "CIEL",
-												"value": "1107"
-											}
-										]
-									},
 									{
 										"concept": "140501AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 										"label": "Fatigue"
@@ -4958,7 +5008,7 @@
 								]
 							},
 							"hide": {
-								"hideWhenExpression": "screeningResult !== '5e4fc757-0b14-49ae-b3b7-419666f41e15'"
+								"hideWhenExpression": "anySideEffectsForTPT != '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
 							},
 							"id": "sideEffects"
 						}
@@ -4982,17 +5032,119 @@
 					"isExpanded": "true",
 					"questions": [
 						{
+							"label": "Are there any OIs?",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "radio",
+								"concept": "cd16e7e6-85cb-441a-a718-18d76957edac",
+								"answers": [
+									{
+										"concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+										"label": "Yes",
+										"conceptMappings": [
+											{
+												"type": "SNOMED-CT",
+												"value": "373066001"
+											},
+											{
+												"type": "PIH",
+												"value": "1065"
+											},
+											{
+												"type": "PIH",
+												"value": "1065"
+											},
+											{
+												"type": "AMPATH",
+												"value": "1065"
+											},
+											{
+												"type": "CIEL",
+												"value": "1065"
+											},
+											{
+												"type": "CIEL",
+												"value": "1065"
+											},
+											{
+												"type": "PIH-Malawi",
+												"value": "1065"
+											},
+											{
+												"type": "CIEL",
+												"value": "1065"
+											},
+											{
+												"type": "SNOMED-CT",
+												"value": "373066001"
+											},
+											{
+												"type": "SNOMED CT",
+												"value": "CT: 373066001"
+											},
+											{
+												"type": "PIH-Malawi",
+												"value": "1065"
+											},
+											{
+												"type": "AMPATH",
+												"value": "1065"
+											}
+										]
+									},
+									{
+										"concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+										"label": "No",
+										"conceptMappings": [
+											{
+												"type": "PIH",
+												"value": "1066"
+											},
+											{
+												"type": "SNOMED-CT",
+												"value": "373067005"
+											},
+											{
+												"type": "PIH",
+												"value": "1066"
+											},
+											{
+												"type": "PIH-Malawi",
+												"value": "1066"
+											},
+											{
+												"type": "CIEL",
+												"value": "1066"
+											},
+											{
+												"type": "AMPATH",
+												"value": "1066"
+											},
+											{
+												"type": "SNOMED-CT",
+												"value": "373067005"
+											},
+											{
+												"type": "PIH-Malawi",
+												"value": "1066"
+											},
+											{
+												"type": "AMPATH",
+												"value": "1066"
+											}
+										]
+									}
+								]
+							},
+							"id": "anyOIs"
+						},
+						{
 							"label": "Opporutnistic illnesses",
 							"type": "obs",
 							"questionOptions": {
 								"rendering": "checkbox",
 								"concept": "efe20a31-6781-40b7-a4d8-5fc347881e76",
 								"answers": [
-									{
-										"concept": "ace33bc0-b97d-46ff-a979-0056439f7d64",
-										"label": "No OI",
-										"conceptMappings": []
-									},
 									{
 										"concept": "146513AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 										"label": "Oesophageal candidiasis",
@@ -5328,7 +5480,10 @@
 									}
 								]
 							},
-							"id": "opportunisticIllnesses"
+							"id": "opportunisticIllnesses",
+							"hide": {
+								"hideWhenExpression": "anyOIs != '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+							}
 						},
 						{
 							"label": "If other OI, specify",
@@ -5544,7 +5699,7 @@
 									},
 									{
 										"concept": "1498AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-										"label": "Mild",
+										"label": "WHO Step 1",
 										"conceptMappings": [
 											{
 												"type": "PIH",
@@ -5582,7 +5737,7 @@
 									},
 									{
 										"concept": "1499AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-										"label": "Moderate",
+										"label": "WHO Step 2",
 										"conceptMappings": [
 											{
 												"type": "AMPATH",
@@ -5624,7 +5779,7 @@
 									},
 									{
 										"concept": "1500AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-										"label": "Severe",
+										"label": "WHO Step 3",
 										"conceptMappings": [
 											{
 												"type": "CIEL",
@@ -7125,6 +7280,14 @@
 							  "conceptMappings": [],
 							  "answers": [
 								{
+									"concept": "160429AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+									"label": "Alive on ART"
+								},
+								{
+									"concept": "162904AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+									"label": "Restart"
+								},
+								{
 								  "concept": "159492AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 								  "label": "TO"
 								},
@@ -7143,14 +7306,6 @@
 								{
 								  "concept": "160432AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 								  "label": "Dead"
-								},
-								{
-								  "concept": "160429AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-								  "label": "Alive on ART"
-								},
-								{
-								  "concept": "162904AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-								  "label": "Restart"
 								}
 							  ]
 							},
@@ -7527,15 +7682,15 @@
 				{
 					"label": "ARV Drugs",
 					"isExpanded": "true",
+					"hide": {
+						"hideWhenExpression": "followupStatus !== '159492AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || followupStatus !== '1260AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || followupStatus !== '27e28afa-b4a6-44e0-b331-ea7250121a0e' || followupStatus !== '160431AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || followupStatus !== '160432AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+					},
 					"questions": [
 						{
 							"label": "Dispense code *",
 							"type": "obs",
 							"required": true,
 							"id": "dispenseCode",
-							"hide": {
-								"hideWhenExpression": "followupStatus !== '160429AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && followupStatus !== '162904AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-							},
 							"questionOptions": {
 							  "rendering": "select",
 							  "concept": "6d7d0327-e1f8-4246-bfe5-be1e82d94b14",
@@ -7818,24 +7973,8 @@
 								"concept": "f3911009-1a8f-42ee-bdfc-1e343c2839aa",
 								"answers": [
 									{
-									  "concept": "425b7bc6-427e-46e8-842d-4949fbb75728",
-									  "label": "5"
-									},
-									{
-									  "concept": "244be06d-4aea-4e80-82b9-377868d75f0e",
-									  "label": "10"
-									},
-									{
 									  "concept": "3ae4256e-6d23-44dc-9f44-5d3e647ca1ba",
 									  "label": "15"
-									},
-									{
-									  "concept": "b106f7a2-d8aa-45b9-8db7-b2b64a175850",
-									  "label": "20"
-									},
-									{
-									  "concept": "5dcdc075-049e-46e2-95c2-a1a46b756a77",
-									  "label": "25"
 									},
 									{
 									  "concept": "fba421cf-a483-4329-b8b1-6a3ef16081bc",
@@ -7854,13 +7993,14 @@
 									  "label": "120"
 									},
 									{
+										"concept": "fa23df4a-dd90-4a0b-a1c9-b44b7f820c93",
+										"label": "150"
+									},
+									{
 									  "concept": "e5f7cc4d-922a-4838-8c75-af9bdbb59bc8",
 									  "label": "180"
 									}
 								  ]
-							},
-							"hide": {
-								"hideWhenExpression": "followupStatus !== '160429AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && followupStatus !== '162904AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
 							},
 							"id": "arvDispensedInDays"
 						},
@@ -8146,9 +8286,6 @@
 									}
 								]
 							},
-							"hide": {
-								"hideWhenExpression": "followupStatus !== '160429AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && followupStatus !== '162904AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-							},
 							"id": "arvSideEffects"
 						},
 						{
@@ -8169,9 +8306,6 @@
 										"conceptMappings": []
 									}
 								]
-							},
-							"hide": {
-								"hideWhenExpression": "followupStatus !== '160429AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && followupStatus !== '162904AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
 							},
 							"id": "regimenChange"
 						},
@@ -9313,6 +9447,10 @@
 								"concept": "685eaed5-b695-499e-96c5-d9ce95d8b7df",
 								"answers": [
 									{
+										"concept": "847b7a43-24bc-425e-bf6e-9096fa2c7f72",
+										"label": "DS0"
+									},
+									{
 										"concept": "f0b327f3-0566-43a3-9514-18c7c0eec1ea",
 										"label": "DS1"
 									},
@@ -9818,7 +9956,7 @@
 				{
 					"intent": "*",
 					"hide": {
-						"hideWhenExpression": "!includes('observationsConductedDuringCurrentVisit','23ad6d16-d8a5-46fa-ac98-dfab4db06d1a') || patient.gender === 'male'"
+						"hideWhenExpression": "!includes('observationsConductedDuringCurrentVisit','23ad6d16-d8a5-46fa-ac98-dfab4db06d1a') || patient.gender === 'male' || age < 15"
 					}
 				}
 			],
@@ -10098,89 +10236,6 @@
 							"id": "screeningStrategy"
 						},
 						{
-							"label": "HPV subtype",
-							"type": "obs",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "7bb81ac2-7a2a-4870-b965-fd3883d36f20",
-								"answers": [
-									{
-										"concept": "bc4bb2e7-1e29-4f26-96a2-f64e239fc1db",
-										"label": "Subtype 16",
-										"conceptMappings": []
-									},
-									{
-										"concept": "9162ebc9-b9bc-4c8a-9f4a-e18ef02e24cd",
-										"label": "Subtype 18",
-										"conceptMappings": []
-									},
-									{
-										"concept": "da17aa2b-7319-46cc-907a-51f053cc8869",
-										"label": "Mixed subtype",
-										"conceptMappings": []
-									},
-									{
-										"concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-										"label": "Other subtype",
-										"conceptMappings": [
-											{
-												"type": "AMPATH",
-												"value": "5622"
-											},
-											{
-												"type": "org.openmrs.module.mdrtb",
-												"value": "OTHER"
-											},
-											{
-												"type": "CIEL",
-												"value": "5622"
-											},
-											{
-												"type": "CIEL",
-												"value": "5622"
-											},
-											{
-												"type": "org.openmrs.module.mdrtb",
-												"value": "OTHER"
-											},
-											{
-												"type": "SNOMED-MVP",
-												"value": "56221000105001"
-											},
-											{
-												"type": "PIH",
-												"value": "5622"
-											},
-											{
-												"type": "SNOMED-MVP",
-												"value": "56221000105001"
-											},
-											{
-												"type": "PIH-Malawi",
-												"value": "6408"
-											},
-											{
-												"type": "AMPATH",
-												"value": "5622"
-											},
-											{
-												"type": "PIH",
-												"value": "5622"
-											},
-											{
-												"type": "SNOMED-CT",
-												"value": "74964007"
-											}
-										]
-									}
-								]
-							},
-							"hide": {
-								"hideWhenExpression": "screeningStrategy !== 'd3989991-4f6d-4336-9f84-cb4208d39ae6'"
-							},
-							"id": "hpvSubtype"
-						},
-						{
 							"label": "HPV DNA sample collection date",
 							"type": "obs",
 							"questionOptions": {
@@ -10192,6 +10247,19 @@
 								"hideWhenExpression": "screeningStrategy !== 'd3989991-4f6d-4336-9f84-cb4208d39ae6'"
 							},
 							"id": "hpvDnaSampleCollectedDate"
+						},
+						{
+							"label": "HPV DNA result received date ",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "date",
+								"concept": "8b57d62c-c9a3-454a-b1af-929ca69603ce",
+								"weeksList": ""
+							},
+							"hide": {
+								"hideWhenExpression": "screeningStrategy !== 'd3989991-4f6d-4336-9f84-cb4208d39ae6'"
+							},
+							"id": "hpvDnaResultReceivedDate"
 						},
 						{
 							"label": "HPV DNA screening result",
@@ -10285,17 +10353,97 @@
 							"id": "hpvScreeningResult"
 						},
 						{
-							"label": "HPV DNA result received date ",
+							"label": "HPV subtype",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "date",
-								"concept": "510f2a47-3761-4903-b7eb-8ea389cecfe9"
+								"rendering": "select",
+								"concept": "7bb81ac2-7a2a-4870-b965-fd3883d36f20",
+								"answers": [
+									{
+										"concept": "bc4bb2e7-1e29-4f26-96a2-f64e239fc1db",
+										"label": "Subtype 16",
+										"conceptMappings": []
+									},
+									{
+										"concept": "9162ebc9-b9bc-4c8a-9f4a-e18ef02e24cd",
+										"label": "Subtype 18",
+										"conceptMappings": []
+									},
+									{
+										"concept": "da17aa2b-7319-46cc-907a-51f053cc8869",
+										"label": "Mixed subtype",
+										"conceptMappings": []
+									},
+									{
+										"concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+										"label": "Other subtype",
+										"conceptMappings": [
+											{
+												"type": "AMPATH",
+												"value": "5622"
+											},
+											{
+												"type": "org.openmrs.module.mdrtb",
+												"value": "OTHER"
+											},
+											{
+												"type": "CIEL",
+												"value": "5622"
+											},
+											{
+												"type": "CIEL",
+												"value": "5622"
+											},
+											{
+												"type": "org.openmrs.module.mdrtb",
+												"value": "OTHER"
+											},
+											{
+												"type": "SNOMED-MVP",
+												"value": "56221000105001"
+											},
+											{
+												"type": "PIH",
+												"value": "5622"
+											},
+											{
+												"type": "SNOMED-MVP",
+												"value": "56221000105001"
+											},
+											{
+												"type": "PIH-Malawi",
+												"value": "6408"
+											},
+											{
+												"type": "AMPATH",
+												"value": "5622"
+											},
+											{
+												"type": "PIH",
+												"value": "5622"
+											},
+											{
+												"type": "SNOMED-CT",
+												"value": "74964007"
+											}
+										]
+									}
+								]
 							},
 							"hide": {
-								"hideWhenExpression": "screeningStrategy !== 'd3989991-4f6d-4336-9f84-cb4208d39ae6'"
+								"hideWhenExpression": "screeningStrategy !== 'd3989991-4f6d-4336-9f84-cb4208d39ae6' || hpvScreeningResult !== '703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
 							},
-							"id": "hpvDnaResultReceivedDate"
-						},
+							"id": "hpvSubtype"
+						}
+					]
+				},
+				{
+					"label": "VIA",
+					"isExpanded": "true",
+					"hide": {
+						"hideWhenExpression": "screeningDone !== '165619AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || hpvScreeningResult !== '703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+					},
+					"questions": [
 						{
 							"label": "VIA screening date *",
 							"type": "obs",
@@ -10431,7 +10579,16 @@
 								"hideWhenExpression": "screeningStrategy !== '19cdb2fa-e25f-48bd-9e86-b00a72f9b4e1' && screeningStrategy !== 'd3989991-4f6d-4336-9f84-cb4208d39ae6'"
 							},
 							"id": "viaScreeningResult"
-						},
+						}
+					]
+				},
+				{
+					"label": "Cytology",
+					"isExpanded": "true",
+					"hide": {
+						"hideWhenExpression": "screeningDone !== '165619AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || hpvScreeningResult !== '703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+					},
+					"questions": [
 						{
 							"label": "Cytology sample collection date",
 							"type": "obs",
@@ -10517,8 +10674,8 @@
 					"label": "Biopsy",
 					"isExpanded": "true",
 					"hide": {
-						"hideWhenExpression": "screeningDone !== '165619AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-					},		
+						"hideWhenExpression": "screeningDone !== '165619AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || hpvScreeningResult !== '703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+					},
 					"questions": [
 						{
 							"label": "Biopsy sample collection date",
@@ -10673,8 +10830,8 @@
 					"label": "Colposcopy",
 					"isExpanded": "true",
 					"hide": {
-						"hideWhenExpression": "screeningDone !== '165619AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-					},				
+						"hideWhenExpression": "screeningDone !== '165619AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || hpvScreeningResult !== '703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+					},
 					"questions": [
 						{
 							"label": "Colposcopy exam date",
@@ -10719,7 +10876,7 @@
 					"label": "Treatment",
 					"isExpanded": "true",
 					"hide": {
-						"hideWhenExpression": "screeningDone !== '165619AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+						"hideWhenExpression": "screeningDone !== '165619AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || hpvScreeningResult !== '703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
 					},
 					"questions": [
 						{
@@ -10993,7 +11150,7 @@
 					"label": "Referral",
 					"isExpanded": "true",
 					"hide": {
-						"hideWhenExpression": "confirmedCxCaCases !== '164165AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+						"hideWhenExpression": "confirmedCxCaCases !== '164165AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || hpvScreeningResult !== '703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
 					},
 					"questions": [
 						{
