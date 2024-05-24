@@ -16,16 +16,22 @@
 							"label": "Registraton date",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "1ebc345c-6f09-43e1-a616-d7e52fff4c7d"
 							},
+							"validators": [
+								{
+                                    "type": "date",
+                                    "allowFutureDates": "false"
+                                }
+							],
 							"id": "registrationDate"
 						},
 						{
 							"label": "HIV positive date",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "160554AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 								"weeksList": "",
 								"conceptMappings": [
@@ -55,6 +61,12 @@
 									}
 								]
 							},
+							"validators": [
+								{
+                                    "type": "date",
+                                    "allowFutureDates": "false"
+                                }
+							],
 							"id": "hivPostiveDate"
 						}
 					]
@@ -130,14 +142,6 @@
 								  "label": "ANC partner"
 								},
 								{
-								  "concept": "165475AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-								  "label": "Antenatal program"
-								},
-								{
-								  "concept": "163488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-								  "label": "Community"
-								},
-								{
 								  "concept": "162050AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 								  "label": "Comprehensive care center"
 								},
@@ -156,10 +160,6 @@
 								{
 								  "concept": "160448AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 								  "label": "General medicine department"
-								},
-								{
-								  "concept": "160480AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-								  "label": "Government-run health clinic/facility"
 								},
 								{
 								  "concept": "46c6d199-e290-4dc8-bc48-e050392ebd18",
@@ -190,20 +190,12 @@
 								  "label": "L&D Partner"
 								},
 								{
-								  "concept": "164835AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-								  "label": "Labor and delivery unit"
-								},
-								{
 								  "concept": "115122AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 								  "label": "Malnutrition"
 								},
 								{
 								  "concept": "9d6e28e2-dd0a-4b53-b45d-278ebc219d79",
 								  "label": "Medical Ward"
-								},
-								{
-								  "concept": "163014AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-								  "label": "Non-governmental organization-run health facility"
 								},
 								{
 								  "concept": "160552AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -278,16 +270,8 @@
 								  "label": "PNC Partner"
 								},
 								{
-								  "concept": "541f72cb-b3e1-43ad-9086-24d32467dfa5",
-								  "label": "Post natal care"
-								},
-								{
 								  "concept": "160538AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 								  "label": "Prevention of maternal to child transmission program"
-								},
-								{
-								  "concept": "160479AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-								  "label": "Private health care clinic/facility"
 								},
 								{
 								  "concept": "160546AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -344,42 +328,27 @@
 							  "concept": "73d76014-365e-484c-bf5b-0959add4e3f3",
 							  "conceptMappings": [],
 							  "answers": [
+
+								{
+									"concept": "1275AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+									"label": "HF Outreach testing"
+								  },
 								{
 								  "concept": "163488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-								  "label": "Community"
+								  "label": "Referred from Community testing outlets"
 								},
 								{
 								  "concept": "160480AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-								  "label": "Government-run health clinic/facility"
+								  "label": "Public HF"
 								},
 								{
-								  "concept": "1275AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-								  "label": "Health center hospital"
-								},
-								{
-								  "concept": "1589AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-								  "label": "Hospital"
-								},
-								{
-								  "concept": "163014AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-								  "label": "Non-governmental organization-run health facility"
-								},
-								{
-								  "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-								  "label": "Other"
-								},
-								{
-								  "concept": "160545AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-								  "label": "Outreach program"
-								},
-								{
-								  "concept": "160479AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-								  "label": "Private health care clinic/facility"
-								},
-								{
-								  "concept": "b70be5c7-4388-4e12-9b0e-53f01ae2a3f5",
-								  "label": "Self referred"
-								}
+									"concept": "163014AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+									"label": "Private/NGO HFs"
+								  },
+								  {
+									"concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+									"label": "Other"
+								  }
 							  ]
 							},
 							"validators": []
@@ -519,13 +488,24 @@
 							"label": "Date linked to care and treatment ",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "902faabc-57bd-4fdf-bcaa-e3f8866ebbaf",
 								"weeksList": ""
 							},
 							"hide": {
 								"hideWhenExpression": "linkedToCareAndTreatment !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
 							},
+							"validators": [
+								{
+                                    "type": "date",
+                                    "allowFutureDates": "false"
+                                },
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "myValue < new Date(hivPostiveDate)",
+									"message": "Date Linked should not be earlier than HIV Positive date"
+								}
+							],
 							"id": "dateLinkedToCareAndTreatment"
 						}
 					]
@@ -940,10 +920,21 @@
 							"label": "Final outcome known date",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "e83fbaa5-073b-4a6d-b8ba-23f41d0c7302",
 								"weeksList": ""
 							},
+							"validators": [
+								{
+                                    "type": "date",
+                                    "allowFutureDates": "false"
+                                },
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "myValue < new Date(dateLinkedToCareAndTreatment)",
+									"message": "Final outcome known date should not be earlier than Date Linked to Care and Treatment"
+								}
+							],
 							"hide": {
 								"hideWhenExpression": "finalOutcomeKnown !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
 							},

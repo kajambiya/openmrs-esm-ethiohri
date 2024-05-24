@@ -19,7 +19,7 @@
 							"id": "followupDate",
 							"questionOptions": {
 							  "usePreviousValueDisabled": "true",
-							  "rendering": "eth-date",
+							  "rendering": "date",
 							  "concept": "5c118396-52dc-4cac-8860-e6d8e4a7f296",
 							  "conceptMappings": [],
 							  "answers": []
@@ -35,7 +35,6 @@
 						{
 							"label": "Visit type",
 							"type": "obs",
-							"unspecified": true,
 							"questionOptions": {
 								"usePreviousValueDisabled": "true",
 								"rendering": "radio",
@@ -103,7 +102,7 @@
 								"calculate": {
 									"calculateExpression": "resolve(api.getLatestObs(patient.id, '162227AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'))?.valueDateTime"
 								},
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "162227AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 								"weeksList": "",
 								"conceptMappings": [
@@ -305,7 +304,7 @@
 								"calculate": {
 									"calculateExpression": "resolve(api.getLatestObs(patient.id, 'ae329187-6232-4142-aa91-22c85bc8e5b5'))?.valueDateTime"
 								},
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "ae329187-6232-4142-aa91-22c85bc8e5b5"
 							},
 							"id": "artStartDate",
@@ -315,7 +314,10 @@
 									"failsWhenExpression": "myValue < new Date(hivConfirmationDate)",
 									"message": "ART started date should not be earlier than HIV Confirmed date"
 								}
-							]
+							],
+							"hide": {
+								"hideWhenExpression": "artStarted !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+							}
 						},
 						{
 							"label": "HIV confirmation date",
@@ -2567,7 +2569,7 @@
 							"label": "LMP",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "30d8d278-5ace-4d01-b2f1-8efc28372070",
 								"weeksList": ""
 							},
@@ -2580,7 +2582,7 @@
 							"label": "EDD",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"calculate": {
 									"calculateExpression": "calcEDD('lmp')"
 								},
@@ -2757,7 +2759,7 @@
 							"required": false,
 							"id": "dateOfReferral",
 							"questionOptions": {
-							  "rendering": "eth-date",
+							  "rendering": "date",
 							  "concept": "161561AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 							  "conceptMappings": [
 								{
@@ -3190,7 +3192,10 @@
 							"label": "TB screening date",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"calculate": {
+									"calculateExpression": "followupDate"
+								},
+								"rendering": "date",
 								"concept": "179497a0-6f07-469f-bb2e-9b85644a82af",
 								"weeksList": ""
 							},
@@ -3690,7 +3695,7 @@
 								"calculate": {
 									"calculateExpression": "resolve(api.getLatestObs(patient.id, '159948AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'))?.valueDateTime"
 								},
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "159948AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 								"weeksList": "",
 								"conceptMappings": [
@@ -3852,7 +3857,7 @@
 								"calculate": {
 									"calculateExpression": "resolve(api.getLatestObs(patient.id, '1113AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'))?.valueDateTime"
 								},
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "1113AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 								"weeksList": "",
 								"conceptMappings": [
@@ -3960,7 +3965,7 @@
 								"calculate": {
 									"calculateExpression": "resolve(api.getLatestObs(patient.id, 'd4a98e9e-26b0-429b-82cb-e6a2197eeb05'))?.valueDateTime"
 								},
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "d4a98e9e-26b0-429b-82cb-e6a2197eeb05",
 								"weeksList": ""
 							},
@@ -3973,7 +3978,7 @@
 								"calculate": {
 									"calculateExpression": "resolve(api.getLatestObs(patient.id, '93c114b1-ddcb-41eb-bca5-0c08a2a8c349'))?.valueDateTime"
 								},
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "93c114b1-ddcb-41eb-bca5-0c08a2a8c349",
 								"weeksList": ""
 							},
@@ -4163,7 +4168,7 @@
 								"calculate": {
 									"calculateExpression": "resolve(api.getLatestObs(patient.id, '162320AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'))?.valueDateTime"
 								},
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "162320AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 								"weeksList": "",
 								"conceptMappings": [
@@ -4648,7 +4653,7 @@
 								"calculate": {
 									"calculateExpression": "resolve(api.getLatestObs(patient.id, '162279AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'))?.valueDateTime"
 								},
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "162279AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 								"weeksList": ""
 							},
@@ -4661,7 +4666,7 @@
 							"label": "Date TPT discontinued",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "162281AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 								"weeksList": ""
 							},
@@ -6311,7 +6316,7 @@
 							"label": "Date VL Requested",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "163281AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 								"weeksList": "",
 								"conceptMappings": [
@@ -6330,7 +6335,7 @@
 							"label": "Date result received",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "beeede36-cae4-4f6e-b4b9-e39e37353a82",
 								"weeksList": ""
 							},
@@ -6577,7 +6582,7 @@
 							"label": "Date EAC-1 provided",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "70788495-b7d5-4484-b571-88383409c386",
 								"weeksList": ""
 							},
@@ -6590,7 +6595,7 @@
 							"label": "Date EAC-2 provided",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "25f8b459-94b5-4ea9-8b64-9ccf3f8422e7",
 								"weeksList": ""
 							},
@@ -6603,7 +6608,7 @@
 							"label": "Date EAC-3 provided",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "95f843ff-07d4-4c46-8642-06e935b69be2",
 								"weeksList": ""
 							},
@@ -6760,7 +6765,7 @@
 							"label": "Cotrimoxazole start date",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "164361AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 								"weeksList": "",
 								"conceptMappings": [
@@ -6787,7 +6792,7 @@
 							"label": "Cotrimoxazole stop date",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "164362AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 								"weeksList": "",
 								"conceptMappings": [
@@ -7070,7 +7075,7 @@
 							"label": "Fluconazole start date",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "5ac4300a-5e19-45c8-8692-31a57d6d5b8c"
 							},
 							"hide": {
@@ -7082,7 +7087,7 @@
 							"label": "Fluconazole stop date",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "c2d57bcb-02f2-457d-af05-8d759a1457a7"
 							},
 							"hide": {
@@ -9128,7 +9133,7 @@
 								"calculate": {
 									"calculateExpression": "CustomTreatmentEndDateCalc('followupDate','arvDispensedInDays', 'followupStatus')"
 								},
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "164384AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 							},
 							"readonly": "true",
@@ -9144,7 +9149,7 @@
 								"calculate": {
 									"calculateExpression": "CustomNextVisitDateCalc('followupDate','arvDispensedInDays')"
 								},
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "c596f199-4d76-4eca-b3c4-ffa631c0aee9",
 								"weeksList": ""
 							},
@@ -9166,7 +9171,7 @@
 							"required": false,
 							"id": "toDate",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "160649AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 								"conceptMappings": [
 									{
@@ -9361,7 +9366,7 @@
 							"label": "OTZ enrollment date",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "0fe4faee-0717-4dc0-be3d-1cd52923804a",
 								"weeksList": ""
 							},
@@ -9393,7 +9398,7 @@
 							"label": "Assessment date *",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "78c8abfb-1989-444a-8750-947227f4bde8",
 								"weeksList": ""
 							},
@@ -9846,7 +9851,7 @@
 							"type": "obs",
 							"required": "true",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "72a28ebe-77ba-4592-9291-ac91e46ea770",
 								"weeksList": ""
 							},
@@ -9883,7 +9888,7 @@
 							"type": "obs",
 							"required": "true",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "c7ecf767-325a-41c2-80a7-79c91762ab3e",
 								"weeksList": ""
 							},
@@ -10006,7 +10011,7 @@
 							"label": "Date linked to CxCa screening unit",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "2df6bd1b-c200-4363-8293-0d72ef24e8b7",
 								"weeksList": ""
 							},
@@ -10179,7 +10184,7 @@
 							"label": "HPV DNA sample collection date",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "8b57d62c-c9a3-454a-b1af-929ca69603ce",
 								"weeksList": ""
 							},
@@ -10283,7 +10288,7 @@
 							"label": "HPV DNA result received date ",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "510f2a47-3761-4903-b7eb-8ea389cecfe9"
 							},
 							"hide": {
@@ -10296,7 +10301,7 @@
 							"type": "obs",
 							"required": "true",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "f46c7ed3-65c3-451c-a8e1-4c615f795db1",
 								"weeksList": ""
 							},
@@ -10432,7 +10437,7 @@
 							"type": "obs",
 							"required": "false",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "3b5034de-ce0f-4017-80ab-17746ab3fe15",
 								"weeksList": ""
 							},
@@ -10446,7 +10451,7 @@
 							"type": "obs",
 							"required": "true",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "f0892f21-406c-446b-abd5-bb62f3ea2387",
 								"weeksList": ""
 							},
@@ -10519,7 +10524,7 @@
 							"label": "Biopsy sample collection date",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "5c93668e-6206-4cce-bdf9-7c6fb02991df",
 								"weeksList": ""
 							},
@@ -10529,7 +10534,7 @@
 							"label": "Biopsy result received date",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "473c914c-53d8-496c-a85c-32787a7d95b0",
 								"weeksList": ""
 							},
@@ -10675,7 +10680,7 @@
 							"label": "Colposcopy exam date",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "eb135e8e-5e19-4d6e-ad71-c6bdab26f73d",
 								"weeksList": ""
 							},
@@ -10958,7 +10963,7 @@
 								"hideWhenExpression": "confirmedCxCaCases == '1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && treatmentReceivedForPrecancerousLesion == '1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
 							},
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "163526AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 								"weeksList": "",
 								"conceptMappings": [
@@ -11043,7 +11048,7 @@
 							"label": "Date of referral to other HF",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "161561AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 								"weeksList": "",
 								"conceptMappings": [
@@ -11212,7 +11217,7 @@
 							"label": "Date confirmed client seen the referral HF",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "88571a39-5caf-4260-b8d6-d0e28ca37410"
 							},
 							"hide": {
@@ -11224,7 +11229,7 @@
 							"label": "Date client served in the referral HF",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "080e8ad4-809e-4d51-a2a9-6eaac774ad38",
 								"weeksList": ""
 							},
@@ -11243,7 +11248,7 @@
 							"label": "Next follow-up/screening date for CxCa",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "4ce065b6-aecb-46a3-b60b-41bc5dc8022f",
 								"weeksList": ""
 							},

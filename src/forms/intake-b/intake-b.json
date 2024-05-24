@@ -226,46 +226,80 @@
 				"label": "Cotrimoxazole started date",
 				"type": "obs",
 				"questionOptions": {
-				  "rendering": "eth-date",
+				  "rendering": "date",
 				  "concept": "164361AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 				  "weeksList": ""
 				},
+				"validators": [
+					{
+						"type": "date",
+						"allowFutureDates": "false"
+					}
+				],
 				"id": "cotrimoxazoleDateStarted"
 			  },
 			  {
 				"label": "Cotrimoxazole stopped date",
 				"type": "obs",
 				"questionOptions": {
-				  "rendering": "eth-date",
+				  "rendering": "date",
 				  "concept": "164362AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 				  "weeksList": ""
 				},
+				"validators": [
+					{
+						"type": "date",
+						"allowFutureDates": "false"
+					},
+					{
+						"type": "js_expression",
+						"failsWhenExpression": "myValue < new Date(cotrimoxazoleDateStarted)",
+						"message": "Cotrimoxazole stopped date should not be earlier than started date"
+					}
+				],
 				"id": "cotrimoxazoleDateStopped"
 			  },
 			  {
 				"label": "TPT started date",
 				"type": "obs",
 				"questionOptions": {
-				  "rendering": "eth-date",
+				  "rendering": "date",
 				  "concept": "d94d9408-837e-44bb-a7de-84007d08bd83",
 				  "weeksList": ""
 				},
+				"validators": [
+					{
+						"type": "date",
+						"allowFutureDates": "false"
+					}
+				],
 				"id": "inhStartedDate"
 			  },
 			  {
 				"label": "TPT completed date",
 				"type": "obs",
 				"questionOptions": {
-				  "rendering": "eth-date",
+				  "rendering": "date",
 				  "concept": "e9048636-538a-4c73-9fd7-9e2e98a43281"
 				},
+				"validators": [
+					{
+						"type": "date",
+						"allowFutureDates": "false"
+					},
+					{
+						"type": "js_expression",
+						"failsWhenExpression": "myValue < new Date(inhStartedDate)",
+						"message": "TPT stopped date should not be earlier than started date"
+					}
+				],
 				"id": "inhCompletedDate"
 			  },
 			  {
 				"label": "Fluconazole Preventive Therapy (FPT) started date",
 				"type": "obs",
 				"questionOptions": {
-				  "rendering": "eth-date",
+				  "rendering": "date",
 				  "concept": "5ac4300a-5e19-45c8-8692-31a57d6d5b8c",
 				  "conceptMappings": [
 					{
@@ -274,13 +308,19 @@
 					}
 				  ]
 				},
+				"validators": [
+					{
+						"type": "date",
+						"allowFutureDates": "false"
+					}
+				],
 				"id": "fluconazolePreventiveTherapyDateStarted"
 			  },
 			  {
 				"label": "Fluconazole Preventive Therapy (FPT) completed date",
 				"type": "obs",
 				"questionOptions": {
-				  "rendering": "eth-date",
+				  "rendering": "date",
 				  "concept": "c2d57bcb-02f2-457d-af05-8d759a1457a7",
 				  "conceptMappings": [
 					{
@@ -289,6 +329,17 @@
 					}
 				  ]
 				},
+				"validators": [
+					{
+						"type": "date",
+						"allowFutureDates": "false"
+					},
+					{
+						"type": "js_expression",
+						"failsWhenExpression": "myValue < new Date(fluconazolePreventiveTherapyDateStarted)",
+						"message": "Fluconazole stopped date should not be earlier than started date"
+					}
+				],
 				"id": "fluconazolePreventiveTherapyDateCompleted"
 			  },
 			  {
@@ -1158,10 +1209,16 @@
 				"label": "ART Start date",
 				"type": "obs",
 				"questionOptions": {
-				  "rendering": "eth-date",
+				  "rendering": "date",
 				  "concept": "ae329187-6232-4142-aa91-22c85bc8e5b5",
 				  "weeksList": ""
 				},
+				"validators": [
+					{
+						"type": "date",
+						"allowFutureDates": "false"
+					}
+				],
 				"hide": {
 				  "hideWhenExpression": "arvTreatmentTaken !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
 				},
@@ -1884,10 +1941,16 @@
 				"label": "LMP",
 				"type": "obs",
 				"questionOptions": {
-				  "rendering": "eth-date",
+				  "rendering": "date",
 				  "concept": "30d8d278-5ace-4d01-b2f1-8efc28372070",
 				  "weeksList": ""
 				},
+				"validators": [
+					{
+						"type": "date",
+						"allowFutureDates": "false"
+					}
+				],
 				"hide": {
 				  "hideWhenExpression": "pregnancyAtEnrollment !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
 				},
@@ -1897,7 +1960,7 @@
 				"label": "EDD",
 				"type": "obs",
 				"questionOptions": {
-				  "rendering": "eth-date",
+				  "rendering": "date",
 				  "calculate": {
 					"calculateExpression": "calcEDD('LMP')"
 				  },

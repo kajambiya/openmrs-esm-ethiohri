@@ -16,7 +16,7 @@
 							"label": "Enrollment Date *",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "1ebc345c-6f09-43e1-a616-d7e52fff4c7d"
 							},
 							"required": "true",
@@ -32,6 +32,7 @@
 						{
 							"label": "MRN",
 							"type": "obs",
+							"readonly": "true",
 							"questionOptions": {
 								"calculate": {
                                     "calculateExpression": "getIdentifier(patient, 'MRN')"
@@ -60,6 +61,7 @@
 							"label": "Client's Name *",
 							"type": "obs",
 							"required": "true",
+							"readonly": "true",
 							"questionOptions": {
 								"calculate": {
                                     "calculateExpression": "patient.name[0].given[0]"
@@ -95,6 +97,7 @@
 							"label": "Father's Name *",
 							"type": "obs",
 							"required": "true",
+							"readonly": "true",
 							"questionOptions": {
 								"calculate": {
                                     "calculateExpression": "patient.name[0].given[1]"
@@ -114,6 +117,7 @@
 							"label": "Grand Father's Name *",
 							"type": "obs",
 							"required": "true",
+							"readonly": "true",
 							"questionOptions": {
 								"calculate": {
                                     "calculateExpression": "patient.name[0].family"
@@ -149,6 +153,7 @@
 							"label": "Gender *",
 							"type": "obs",
 							"required": "true",
+							"readonly": "true",
 							"questionOptions": {
 								"calculate": {
                                     "calculateExpression": "getGender(patient)"
@@ -225,11 +230,12 @@
 						{
 							"label": "Date of Birth *",
 							"type": "obs",
+							"readonly": "true",
 							"questionOptions": {
 								"calculate": {
                                     "calculateExpression": "patient.birthDate"
                                 },
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "166575AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 								"weeksList": "",
 								"conceptMappings": [
@@ -248,6 +254,7 @@
 						{
 							"label": "Age",
 							"type": "obs",
+							"readonly": "true",
 							"questionOptions": {
 								"calculate": {
                                     "calculateExpression": "patient.age"
@@ -803,7 +810,7 @@
 							"label": "Date confirmed HIV+/Retesting",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 								"conceptMappings": [
 									{

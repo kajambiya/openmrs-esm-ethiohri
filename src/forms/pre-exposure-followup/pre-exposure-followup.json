@@ -18,7 +18,7 @@
               "required": "true",
 							"id": "followupDate",
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "5c118396-52dc-4cac-8860-e6d8e4a7f296",
                 "conceptMappings": [],
                 "answers": []
@@ -167,6 +167,9 @@
                     "label": "Referral for antiretroviral therapy"
                   }
                 ]
+              },
+              "hide": {
+                "hideWhenExpression": "finalTestResult == '5e4fc757-0b14-49ae-b3b7-419666f41e15'"
               },
               "validators": []
             }
@@ -337,7 +340,7 @@
               "required": false,
               "id": "lmp",
               "questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "30d8d278-5ace-4d01-b2f1-8efc28372070",
 								"weeksList": ""
 							},
@@ -352,7 +355,7 @@
               "required": false,
               "id": "edd",
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "5596AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                 "conceptMappings": [
                   {
@@ -770,7 +773,7 @@
               "required": false,
               "id": "stiTreatmentDate",
               "questionOptions": {
-                "rendering": "select",
+                "rendering": "date",
                 "concept": "1428AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                 "conceptMappings": [
                   {
@@ -792,7 +795,7 @@
                 "answers": []
               },
               "hide": {
-                "hideWhenExpression": "screeningResultForSTI == 'b0ff6e2e-ff01-4683-859a-9fcd69dff12e' || isEmpty('screeningResultForSTI')"
+                "hideWhenExpression": "screeningResultForSTI == 'b0ff6e2e-ff01-4683-859a-9fcd69dff12e'"
               },
               "validators": []
             },
@@ -882,14 +885,66 @@
               "validators": []
             },
             {
-              "label": "Creatinine weight",
+              "label": "Weight",
               "type": "obs",
               "required": false,
-              "id": "creatinineWeight",
+              "id": "weight",
               "questionOptions": {
                 "rendering": "number",
                 "concept": "8ddaed89-5474-424a-a9e1-a8ad28b091fb",
                 "conceptMappings": []
+              },
+              "validators": []
+            },
+            {
+              "label": "eGFR",
+              "type": "obs",
+              "required": false,
+              "id": "eGFR",
+              "questionOptions": {
+                "calculate": {
+									"calculateExpression": "calcEGFR(patient, 'weight', 'creatinineLevel')"
+								},
+                "rendering": "select",
+                "concept": "165570AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "conceptMappings": [
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "SNOMED-CT",
+                    "value": "364183002"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "165570"
+                  }
+                ],
+                "answers": [
+                  {
+                    "concept": "120575AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Chronic kidney disease, stage I"
+                  },
+                  {
+                    "concept": "120574AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Chronic kidney disease, stage II (mild)"
+                  },
+                  {
+                    "concept": "2c156b19-3b11-4e11-9ae2-5ea2bff2b093",
+                    "label": "Chronic kidney disease, stage IIIA (moderate)"
+                  },
+                  {
+                    "concept": "3034271b-5d91-4616-9f49-8a8cae5c2e76",
+                    "label": "Chronic kidney disease, stage IIIB (moderate)"
+                  },
+                  {
+                    "concept": "120578AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Chronic kidney disease, stage IV (severe)"
+                  },
+                  {
+                    "concept": "120577AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Chronic kidney disease, stage V"
+                  }
+                ]
               },
               "validators": []
             }
@@ -1026,7 +1081,7 @@
               "id": "prepDoseEndDate",
               "readonly": "true",
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "1dcc457b-638c-4103-887b-4e8581e052f8",
                 "calculate": {
 									"calculateExpression": "CustomTreatmentEndDateCalc('followupDate','arvDispensedInDays', 'followupStatus')"
@@ -1133,7 +1188,7 @@
 								"calculate": {
 									"calculateExpression": "CustomNextVisitDateCalc('followupDate','arvDispensedInDays')"
 								},
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "c596f199-4d76-4eca-b3c4-ffa631c0aee9",
 								"weeksList": ""
 							},
@@ -1145,6 +1200,12 @@
       ]
     }
   ],
+  "availableIntents": [
+		{
+			"intent": "*",
+			"display": "default_intent"
+		}
+	],
   "processor": "EncounterFormProcessor",
   "uuid": "3329c50b-2cd2-44ab-af2b-06f3b914cc7e",
   "referencedForms": [],

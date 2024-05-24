@@ -13,36 +13,6 @@
 					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "Family member relationship",
-							"type": "obs",
-							"required": false,
-							"id": "familyRelationship",
-							"questionOptions": {
-							  "rendering": "select",
-							  "concept": "c6198ee6-5248-45c4-91a7-c6498bf45c54",
-							  "conceptMappings": [],
-							  "answers": [
-								{
-								  "concept": "1528AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-								  "label": "Child"
-								},
-								{
-								  "concept": "1527AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-								  "label": "Parent"
-								},
-								{
-								  "concept": "5617AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-								  "label": "Partner or spouse"
-								},
-								{
-								  "concept": "972AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-								  "label": "Sibling"
-								}
-							  ]
-							},
-							"validators": []
-						  },
-						{
 							"label": "Does the client have family members (spouse/parent and child(ren)/siblings < 15 years old ",
 							"type": "obs",
 							"questionOptions": {
@@ -336,7 +306,7 @@
 							"label": "Counselation date",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"weeksList": "",
 								"concept": "a4c7ffa9-ba89-4f7d-ae01-50c139527ce4"
 							},
@@ -436,7 +406,7 @@
 							"label": "HIV test date",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "164400AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 								"weeksList": "",
 								"conceptMappings": [
@@ -587,7 +557,7 @@
 							"label": "Date enrolled in care",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "1ebc345c-6f09-43e1-a616-d7e52fff4c7d"
 							},
 							"hide": {
@@ -736,7 +706,7 @@
 							"label": "Date started ART",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "eth-date",
+								"rendering": "date",
 								"concept": "ae329187-6232-4142-aa91-22c85bc8e5b5",
 								"weeksList": "",
 								"conceptMappings": [

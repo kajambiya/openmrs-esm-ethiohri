@@ -15,7 +15,7 @@
             {
               "label": "Final Outcome",
               "type": "obs",
-              "required": false,
+              "required": true,
               "id": "finalOutcome",
               "questionOptions": {
                 "rendering": "radio",
@@ -56,10 +56,10 @@
             {
               "label": "Date of final outcome",
               "type": "obs",
-              "required": false,
+              "required": true,
               "id": "dateOfFinalOutcome",
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "e83fbaa5-073b-4a6d-b8ba-23f41d0c7302"
               }
             }
@@ -68,6 +68,9 @@
         {
           "label": "Referral Information",
           "isExpanded": "true",
+          "hide": {
+            "hideWhenExpression": "finalOutcome !== '159492AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && finalOutcome !== '73d76014-365e-484c-bf5b-0959add4e3f3'"
+          },
           "questions": [
             {
               "label": "Provider name",
@@ -131,7 +134,7 @@
               "required": false,
               "id": "referredDate",
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "161561AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                 "conceptMappings": [
                   {

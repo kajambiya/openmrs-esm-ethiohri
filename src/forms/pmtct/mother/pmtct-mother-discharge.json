@@ -11,13 +11,14 @@
               {
                 "label": "Date of enrollment / booking",
                 "type": "obs",
-                "required": true,
+                "required": false,
+                "readonly": true,
                 "id": "dateOfEnrollment",
                 "questionOptions": {
                   "calculate": {
-                    "calculateExpression": "resolve(api.getLatestObs(patient.id, '0fe4faee-0717-4dc0-be3d-1cd52923804a', '0f108867-410d-4479-8375-2c85f218027c'))?.valueDateTime"
+                    "calculateExpression": "resolve(api.getLatestObs(patient.id, '0fe4faee-0717-4dc0-be3d-1cd52923804a', '1914ed4a-86fe-43d2-8338-2be2937ff11e'))?.valueDateTime"
                   },
-                  "rendering": "eth-date",
+                  "rendering": "date",
                   "concept": "0fe4faee-0717-4dc0-be3d-1cd52923804a",
                   "conceptMappings": [],
                   "answers": []
@@ -27,7 +28,7 @@
               {
                 "label": "Maternal PMTCT Final outcome",
                 "type": "obs",
-                "required": false,
+                "required": true,
                 "id": "finalOutcome",
                 "questionOptions": {
                   "rendering": "radio",
@@ -57,15 +58,30 @@
               {
                 "label": "Discharge date",
                 "type": "obs",
-                "required": false,
+                "required": true,
                 "id": "dischargeDate",
                 "questionOptions": {
-                  "rendering": "eth-date",
+                  "rendering": "date",
                   "concept": "18f78400-d91c-40ea-bd9f-4388c10d50c1",
                   "conceptMappings": [],
                   "answers": []
                 },
-                "validators": []
+                "validators": [
+                  {
+                    "type": "date",
+                    "allowFutureDates": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "myValue < new Date(dateOfEnrollment)",
+                  "message": "Discharge date should not be earlier than date of enrollment / booking"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "myValue < new Date(patient.birthDate)",
+                  "message": "Discharge date should not be earlier than patient's date of birth"
+                }
+                ]
               },
               {
                 "label": "Reason for discharge",

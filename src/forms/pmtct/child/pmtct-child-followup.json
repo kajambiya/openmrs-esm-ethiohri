@@ -18,7 +18,7 @@
               "required": false,
               "id": "followupDate",
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "5c118396-52dc-4cac-8860-e6d8e4a7f296",
                 "conceptMappings": [],
                 "answers": []
@@ -566,13 +566,18 @@
                   }
                 ]
               },
-              "validators": []
+               "hide": {
+                "hideWhenExpression": "hivTestDone !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
             },
             {
               "label": "Specimen type",
               "type": "obs",
               "required": false,
               "id": "specimenType",
+              "hide": {
+                "hideWhenExpression": "hivTestDone !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              },
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "4c1fed7f-7346-498d-9846-effd0629ecff",
@@ -595,8 +600,11 @@
               "type": "obs",
               "required": false,
               "id": "dateOfSampleCollectionDate",
+              "hide": {
+                "hideWhenExpression": "hivTestDone !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              },
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "159951AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                 "conceptMappings": [
                   {
@@ -619,6 +627,9 @@
               "type": "obs",
               "required": false,
               "id": "nameOfTheTestingLaboratory",
+              "hide": {
+                "hideWhenExpression": "hivTestDone !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              },
               "questionOptions": {
                 "rendering": "text",
                 "concept": "164422AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -648,6 +659,9 @@
               "type": "obs",
               "required": false,
               "id": "specimenCollectedBy",
+              "hide": {
+                "hideWhenExpression": "hivTestDone !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              },
               "questionOptions": {
                 "rendering": "text",
                 "concept": "870d892b-43b1-4718-a910-8d6346c27454",
@@ -661,6 +675,9 @@
               "type": "obs",
               "required": false,
               "id": "telephoneNumber",
+              "hide": {
+                "hideWhenExpression": "hivTestDone !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              },
               "questionOptions": {
                 "rendering": "text",
                 "concept": "167158AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -690,8 +707,11 @@
               "type": "obs",
               "required": false,
               "id": "dateOfDBSReferral",
+              "hide": {
+                "hideWhenExpression": "hivTestDone !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              },
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "161561AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                 "conceptMappings": [
                   {
@@ -709,8 +729,11 @@
               "type": "obs",
               "required": false,
               "id": "dateOfDbsResultReceivedBack",
+              "hide": {
+                "hideWhenExpression": "hivTestDone !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              },
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "ec2f989b-bdf8-4abe-8601-dc7a99d000eb",
                 "conceptMappings": [],
                 "answers": []
@@ -722,6 +745,9 @@
         {
           "label": "Testing Lab Information",
           "isExpanded": "true",
+          "hide": {
+                "hideWhenExpression": "hivTestDone !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                    },
           "questions": [
             {
               "label": "Date of sample received",
@@ -729,7 +755,7 @@
               "required": false,
               "id": "dateSampleReceived",
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "e724050c-cd85-4405-94a0-7a8e3b082d58",
                 "conceptMappings": [],
                 "answers": []
@@ -775,7 +801,7 @@
               "required": false,
               "id": "dateTestPerformed",
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "164400AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                 "conceptMappings": [
                   {
@@ -974,6 +1000,9 @@
                   }
                 ]
               },
+              "hide": {
+                "hideWhenExpression": "confirmatoryTestDone !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                    },
               "validators": []
             }
           ]
@@ -988,32 +1017,15 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "ARV prophylaxis started",
-              "type": "obs",
-              "required": false,
-              "id": "arvProphylaxisStarted",
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "39238bfb-ea2c-4cec-a395-4d62574da39b",
-                "conceptMappings": [],
-                "answers": [
-                  {
-                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Yes"
-                  },
-                  {
-                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "No"
-                  }
-                ]
-              }
-            },
-            {
               "label": "ARV prophylaxis",
               "type": "obs",
               "required": false,
+              "readonly": true,
               "id": "arvStarted",
               "questionOptions": {
+                "calculate": {
+									"calculateExpression": "resolve(api.getLatestObs(patient.id, 'b7f50074-b9f2-4b0d-9f20-d18b646d822e', 'ca7108d6-b4f2-4b46-be1c-d0ddd4f0ed97' ))?.valueCodeableConcept?.coding?"
+								},
                 "rendering": "radio",
                 "concept": "b7f50074-b9f2-4b0d-9f20-d18b646d822e",
                 "conceptMappings": [],
@@ -1083,17 +1095,18 @@
                 ],
                 "answers": [
                   {
+                    "concept": "159407AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Poor"
+                  },
+                  {
                     "concept": "159406AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                     "label": "Fair"
                   },
                   {
                     "concept": "159405AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                     "label": "Good"
-                  },
-                  {
-                    "concept": "159407AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Poor"
                   }
+                  
                 ]
               },
               "validators": []
@@ -1117,12 +1130,18 @@
               "required": false,
               "id": "nextVisitDate",
               "questionOptions": {
-                "rendering": "eth-date",
+                "rendering": "date",
                 "concept": "c596f199-4d76-4eca-b3c4-ffa631c0aee9",
                 "conceptMappings": [],
                 "answers": []
               },
-              "validators": []
+              "validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "myValue < new Date(followupDate)",
+									"message": "Next visit date should not be earlier than Followup date"
+								}
+							]
             }
           ]
         }
