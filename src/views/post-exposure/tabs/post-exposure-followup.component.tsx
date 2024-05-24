@@ -1,13 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { EncounterList } from "@ohri/openmrs-esm-ohri-commons-lib";
 import {
+  INTAKE_A_ENCOUNTER_TYPE,
   MRN_NULL_WARNING,
+  POSITIVE_PATIENT_WARNING,
   POST_EXPOSURE_FOLLOWUP_ENCOUNTER_TYPE,
+  POST_EXPOSURE_REGISTRATION_ENCOUNTER_TYPE,
+  dateOfHIVConfirmation,
+  formWarning,
 } from "../../../constants";
 import { getData } from "../../encounterUtils";
 import { moduleName } from "../../../index";
 import styles from "../../../root.scss";
-import { fetchIdentifiers } from "../../../api/api";
+import {
+  fetchIdentifiers,
+  getLatestObs,
+  getPatientEncounters,
+} from "../../../api/api";
 
 const columns = [
   {
@@ -85,12 +94,32 @@ const PostExposureFollowup: React.FC<{ patientUuid: string }> = ({
   patientUuid,
 }) => {
   const [hasMRN, setHasMRN] = useState(false);
+  const [hasScreeningEncounter, setHasScreeningEncounter] = useState(false);
+  const [isConfirmedPositive, setIsConfirmedPositive] = useState(false);
+
   useEffect(() => {
     (async () => {
       const identifiers = await fetchIdentifiers(patientUuid);
       if (identifiers?.find((e) => e.identifierType.display === "MRN")) {
         setHasMRN(true);
       }
+    })();
+    (async () => {
+      const previousEncounters = await getPatientEncounters(
+        patientUuid,
+        POST_EXPOSURE_REGISTRATION_ENCOUNTER_TYPE
+      );
+      if (previousEncounters.length) {
+        setHasScreeningEncounter(true);
+      }
+    })();
+    (async () => {
+      const positiveConfirmationDate = await getLatestObs(
+        patientUuid,
+        dateOfHIVConfirmation,
+        INTAKE_A_ENCOUNTER_TYPE
+      );
+      if (positiveConfirmationDate != null) setIsConfirmedPositive(true);
     })();
   });
   return (
@@ -105,10 +134,16 @@ const PostExposureFollowup: React.FC<{ patientUuid: string }> = ({
         launchOptions={{
           displayText: "Add",
           moduleName: moduleName,
-          hideFormLauncher: !hasMRN,
+          hideFormLauncher: !hasMRN || !hasScreeningEncounter,
         }}
       />
       {!hasMRN && <p className={styles.patientName}>{MRN_NULL_WARNING}</p>}
+      {!hasScreeningEncounter && (
+        <p className={styles.patientName}>{formWarning("PEP Registration")}</p>
+      )}
+      {isConfirmedPositive && (
+        <p className={styles.patientName}>{POSITIVE_PATIENT_WARNING}</p>
+      )}
     </>
   );
 };

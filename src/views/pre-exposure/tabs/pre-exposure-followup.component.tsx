@@ -2,14 +2,21 @@
 import React, { useEffect, useState } from "react";
 import { EncounterList } from "@ohri/openmrs-esm-ohri-commons-lib";
 import {
+  INTAKE_A_ENCOUNTER_TYPE,
   MRN_NULL_WARNING,
+  POSITIVE_PATIENT_WARNING,
   PRE_EXPOSURE_FOLLOWUP_ENCOUNTER_TYPE,
   PRE_EXPOSURE_SCREENING_ENCOUNTER_TYPE,
-  PRE_EXPOSURE_SCREENING_NEEDED_WARNING,
+  dateOfHIVConfirmation,
+  formWarning,
 } from "../../../constants";
 import { getData } from "../../encounterUtils";
 import { moduleName } from "../../../index";
-import { fetchIdentifiers, getPatientEncounters } from "../../../api/api";
+import {
+  fetchIdentifiers,
+  getLatestObs,
+  getPatientEncounters,
+} from "../../../api/api";
 import styles from "../../../root.scss";
 
 const columns = [
@@ -109,7 +116,9 @@ const PreExposureFollowupList: React.FC<{ patientUuid: string }> = ({
   patientUuid,
 }) => {
   const [hasMRN, setHasMRN] = useState(false);
-  const [hasScreeningEncounter, setHasPreviousEncounter] = useState(false);
+  const [hasScreeningEncounter, setHasScreeningEncounter] = useState(false);
+  const [isConfirmedPositive, setIsConfirmedPositive] = useState(false);
+
   useEffect(() => {
     (async () => {
       const identifiers = await fetchIdentifiers(patientUuid);
@@ -123,8 +132,16 @@ const PreExposureFollowupList: React.FC<{ patientUuid: string }> = ({
         PRE_EXPOSURE_SCREENING_ENCOUNTER_TYPE
       );
       if (previousEncounters.length) {
-        setHasPreviousEncounter(true);
+        setHasScreeningEncounter(true);
       }
+    })();
+    (async () => {
+      const positiveConfirmationDate = await getLatestObs(
+        patientUuid,
+        dateOfHIVConfirmation,
+        INTAKE_A_ENCOUNTER_TYPE
+      );
+      if (positiveConfirmationDate != null) setIsConfirmedPositive(true);
     })();
   });
   return (
@@ -144,9 +161,10 @@ const PreExposureFollowupList: React.FC<{ patientUuid: string }> = ({
       />
       {!hasMRN && <p className={styles.patientName}>{MRN_NULL_WARNING}</p>}
       {!hasScreeningEncounter && (
-        <p className={styles.patientName}>
-          {PRE_EXPOSURE_SCREENING_NEEDED_WARNING}
-        </p>
+        <p className={styles.patientName}>{formWarning("PREP Screening")}</p>
+      )}
+      {isConfirmedPositive && (
+        <p className={styles.patientName}>{POSITIVE_PATIENT_WARNING}</p>
       )}
     </>
   );

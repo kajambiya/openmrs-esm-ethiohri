@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { EncounterList } from "@ohri/openmrs-esm-ohri-commons-lib";
 import {
+  INTAKE_A_ENCOUNTER_TYPE,
   MRN_NULL_WARNING,
+  POSITIVE_PATIENT_WARNING,
   POST_EXPOSURE_REGISTRATION_ENCOUNTER_TYPE,
+  dateOfHIVConfirmation,
 } from "../../../constants";
 import { getData } from "../../encounterUtils";
 import { moduleName } from "../../../index";
 import styles from "../../../root.scss";
-import { fetchIdentifiers } from "../../../api/api";
+import { fetchIdentifiers, getLatestObs } from "../../../api/api";
 
 const columns = [
   {
@@ -85,12 +88,22 @@ const PostExposureRegistration: React.FC<{ patientUuid: string }> = ({
   patientUuid,
 }) => {
   const [hasMRN, setHasMRN] = useState(false);
+  const [isConfirmedPositive, setIsConfirmedPositive] = useState(false);
+
   useEffect(() => {
     (async () => {
       const identifiers = await fetchIdentifiers(patientUuid);
       if (identifiers?.find((e) => e.identifierType.display === "MRN")) {
         setHasMRN(true);
       }
+    })();
+    (async () => {
+      const positiveConfirmationDate = await getLatestObs(
+        patientUuid,
+        dateOfHIVConfirmation,
+        INTAKE_A_ENCOUNTER_TYPE
+      );
+      if (positiveConfirmationDate != null) setIsConfirmedPositive(true);
     })();
   });
   return (
@@ -109,6 +122,9 @@ const PostExposureRegistration: React.FC<{ patientUuid: string }> = ({
         }}
       />
       {!hasMRN && <p className={styles.patientName}>{MRN_NULL_WARNING}</p>}
+      {isConfirmedPositive && (
+        <p className={styles.patientName}>{POSITIVE_PATIENT_WARNING}</p>
+      )}
     </>
   );
 };

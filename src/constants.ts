@@ -154,10 +154,13 @@ export const kidneyDiseaseStage4 = "120578AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
 export const kidneyDiseaseStage5 = "120577AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
 
 export const MRN_NULL_WARNING =
-  "* Patient needs to have a registered MRN before an Intake form can be filled ! Please add an MRN on patient details.";
+  "* Patient needs to have a registered MRN, before this form can be filled ! Please add an MRN on patient details.";
 
-export const PRE_EXPOSURE_SCREENING_NEEDED_WARNING =
-  "* Patient needs to have a Pre-Exposure Screening before a Pre-Exposure followup up can be filled !;";
+export const formWarning = (formName) =>
+  `* Patient needs to have a ${formName} form filled, before a this form can be filled !`;
+
+export const POSITIVE_PATIENT_WARNING =
+  "* Patient has already been confirmed as HIV positive !";
 
 export const AGE_ABOVE_THREE_WARNING =
   "* Children above three years old are not eligible for PMTCT !";

@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { EncounterList } from "@ohri/openmrs-esm-ohri-commons-lib";
-import { MRN_NULL_WARNING, RETEST_ENCOUNTER_TYPE } from "../../../constants";
+import {
+  MRN_NULL_WARNING,
+  POSITIVE_TRACKING_ENCOUNTER_TYPE,
+  RETEST_ENCOUNTER_TYPE,
+  formWarning,
+} from "../../../constants";
 import { getData } from "../../encounterUtils";
 import { moduleName } from "../../../index";
 import styles from "../../../root.scss";
@@ -88,6 +93,8 @@ const columns = [
 const HivRetestList: React.FC<{ patientUuid: string }> = ({ patientUuid }) => {
   const [hasMRN, setHasMRN] = useState(false);
   const [hasPreviousEncounter, setHasPreviousEncounter] = useState(false);
+  const [hasPositiveTrackingEncounter, setHasPositiveTrackingEncounter] =
+    useState(false);
   useEffect(() => {
     (async () => {
       const identifiers = await fetchIdentifiers(patientUuid);
@@ -105,6 +112,16 @@ const HivRetestList: React.FC<{ patientUuid: string }> = ({ patientUuid }) => {
         setHasPreviousEncounter(true);
       }
     })();
+
+    (async () => {
+      const previousEncounters = await getPatientEncounters(
+        patientUuid,
+        POSITIVE_TRACKING_ENCOUNTER_TYPE
+      );
+      if (previousEncounters.length) {
+        setHasPositiveTrackingEncounter(true);
+      }
+    })();
   });
   return (
     <>
@@ -118,10 +135,14 @@ const HivRetestList: React.FC<{ patientUuid: string }> = ({ patientUuid }) => {
         launchOptions={{
           displayText: "Add",
           moduleName: moduleName,
-          hideFormLauncher: !hasMRN || hasPreviousEncounter,
+          hideFormLauncher:
+            !hasMRN || hasPreviousEncounter || !hasPositiveTrackingEncounter,
         }}
       />
       {!hasMRN && <p className={styles.patientName}>{MRN_NULL_WARNING}</p>}
+      {!hasPositiveTrackingEncounter && (
+        <p className={styles.patientName}>{formWarning("Positive Tracking")}</p>
+      )}
     </>
   );
 };
