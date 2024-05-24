@@ -3,7 +3,7 @@ import { encounterRepresentation } from "../constants";
 
 export function getPatientEncounters(patientUUID, encounterUUID) {
   return openmrsFetch(
-    `${restBaseUrl}encounter?encounterType=${encounterUUID}&patient=${patientUUID}`
+    `${restBaseUrl}/encounter?encounterType=${encounterUUID}&patient=${patientUUID}`
   ).then(({ data }) => {
     return data.results;
   });
