@@ -1,196 +1,206 @@
 {
-    "@openmrs/esm-patient-chart-app": {
-      "extensionSlots": {
-        "patient-chart-summary-dashboard-slot": {
-          "remove": ["vitals-overview-widget", "active-medications-widget"]
-        },
-        "visits-summary-slot": {
-          "remove": ["visits-summary-ext"]
-        },
-        "patient-chart-dashboard-slot": {
-          "remove": [
-            "allergies-summary-dashboard",
-            "attachments-results-summary-dashboard",
-            "conditions-summary-dashboard",
-            "offline-tools-patient-chart-actions-dashboard-link",
-            "results-summary-dashboard",
-            "test-results-summary-dashboard"
-          ]
-        }
+  "@openmrs/esm-patient-chart-app": {
+    "extensionSlots": {
+      "patient-chart-summary-dashboard-slot": {
+        "remove": ["vitals-overview-widget", "active-medications-widget"]
       },
-      "logo": {
-        "src": "ethiohri_logo_light.svg"
-      }
-    },
-    "@openmrs/esm-home-app": {
-      "extensionSlots": {
-        "homepage-widgets-slot": {
-          "remove": ["home-appointments", "active-visits-widget"],
-          "add": ["ohri-patient-list"]
-        }
-      }
-    },
-    "@openmrs/esm-styleguide": {
-      "Brand color #1": "#002f6c",
-      "Brand color #2": "#002f6c",
-      "Brand color #3": "#1a75bb"
-    },
-    "@openmrs/esm-primary-navigation-app": {
-      "logo": {
-        "src": "ethiohri_logo_light.svg"
-      }
-    },
-    "@openmrs/esm-login-app": {
-      "logo": {
-        "src": "ethiohri_logo_dark.svg"
-      }
-    },
-    "@openmrs/esm-patient-registration-app": {
-      "sections": ["demographics", "contact"],
-      "Translation overrides": {
-        "en": {
-          "givenNameLabelText": "Client's Name",
-          "middleNameLabelText": "Father's Name",
-          "familyNameLabelText": "Grandfather's Name"
-        },
-        "am": {
-          "givenNameLabelText": "Client's Name",
-          "middleNameLabelText": "Father's Name",
-          "familyNameLabelText": "Grandfather's Name"
-        }
+      "visits-summary-slot": {
+        "remove": ["visits-summary-ext"]
       },
-      "sectionDefinitions": [
-        {
-          "id": "contact",
-          "name": "Contact Info",
-          "fields": [
-            "address",
-            "kebela",
-            "houseNumber",
-            "mobiletelephoneNumber",
-            "hometelephoneNumber",
-            "worktelephoneNumber",
-            "weight",
-            "grandFatherName",
-            "testGender"
-          ]
-        },
-        {
-          "id": "demographics",
-          "name": "Basic Info",
-          "fields": ["name", "gender", "dob", "id"]
-        }
-      ],
-      "fieldDefinitions": [
-        {
-          "id": "kebela",
-          "label": "Kebele",
-          "type": "person attribute",
-          "uuid": "e1695908-916d-4c9e-b62b-90b512492da2"
-        },
-        {
-          "id": "houseNumber",
-          "label": "House Number",
-          "type": "person attribute",
-          "uuid": "553bedc6-4e59-42d3-b80b-d3cf02a792bd"
-        },
-        {
-          "id": "mobiletelephoneNumber",
-          "label": "Mobile Telephone Number",
-          "type": "person attribute",
-          "uuid": "1794bcad-b2d2-47ae-8e26-1d4ec31ade13",
-          "validation": {
-            "matches": "^[0-9]{10}$"
-          }
-        },
-        {
-          "id": "weight",
-          "label": "Weight",
-          "type": "obs",
-          "uuid": "5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-        },
-        {
-          "id": "grandFatherName",
-          "label": "Grand Father Name",
-          "type": "obs",
-          "uuid": "166103AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-        },
-        {
-          "id": "testGender",
-          "label": "Test Gender",
-          "type": "obs",
-          "uuid": "1533AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-          "customConceptAnswers": [
-            {
-            "uuid":"1534AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "label":"Male"
-          },
-            {
-            "uuid":"1535AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "label":"Female"
-          }
+      "patient-chart-dashboard-slot": {
+        "remove": [
+          "allergies-summary-dashboard",
+          "attachments-results-summary-dashboard",
+          "conditions-summary-dashboard",
+          "offline-tools-patient-chart-actions-dashboard-link",
+          "results-summary-dashboard",
+          "test-results-summary-dashboard"
         ]
-        },
-        {
-          "id": "hometelephoneNumber",
-          "label": "Home Telephone Number",
-          "type": "person attribute",
-          "uuid": "b3269e45-8e40-44a1-a5f2-bbb2765c6287",
-          "validation": {
-            "matches": "^[0-9]{10}$"
-          }
-        },
-        {
-          "id": "worktelephoneNumber",
-          "label": "Work Telephone Number",
-          "type": "person attribute",
-          "uuid": "a69aae3d-8c79-4ac5-a218-88889f007163",
-          "validation": {
-            "matches": "^[0-9]{10}$"
-          }
+      }
+    },
+    "logo": {
+      "src": "ethiohri_logo_light.svg"
+    }
+  },
+  "@openmrs/esm-home-app": {
+    "extensionSlots": {
+      "homepage-widgets-slot": {
+        "remove": ["home-appointments", "active-visits-widget"],
+        "add": ["ohri-patient-list"]
+      }
+    }
+  },
+  "@openmrs/esm-styleguide": {
+    "Brand color #1": "#002F6C",
+    "Brand color #2": "#002F6C",
+    "Brand color #3": "#1A75BB"
+  },
+  "@openmrs/esm-primary-navigation-app": {
+    "logo": {
+      "src": "ethiohri_logo_light.svg"
+    }
+  },
+  "@openmrs/esm-login-app": {
+    "logo": {
+      "src": "ethiohri_logo_dark.svg"
+    }
+  },
+  "@openmrs/esm-patient-registration-app": {
+    "sections": ["demographics", "contact"],
+    "Translation overrides": {
+      "en": {
+        "givenNameLabelText": "Client's Name",
+        "middleNameLabelText": "Father's Name",
+        "familyNameLabelText": "Grandfather's Name"
+      },
+      "am": {
+        "givenNameLabelText": "Client's Name",
+        "middleNameLabelText": "Father's Name",
+        "familyNameLabelText": "Grandfather's Name"
+      }
+    },
+    "sectionDefinitions": [
+      {
+        "id": "contact",
+        "name": "Contact Info",
+        "fields": [
+          "address",
+          "kebela",
+          "houseNumber",
+          "mobiletelephoneNumber",
+          "hometelephoneNumber",
+          "worktelephoneNumber",
+          "obs-test-phoneNumber",
+          "obs-test-fullName",
+          "obs-test-gender",
+          "obs-test-registrationDate"
+        ]
+      },
+      {
+        "id": "demographics",
+        "name": "Basic Info",
+        "fields": ["name", "gender", "dob", "id"]
+      }
+    ],
+    "fieldDefinitions": [
+      {
+        "id": "kebela",
+        "label": "Kebele",
+        "type": "person attribute",
+        "uuid": "e1695908-916d-4c9e-b62b-90b512492da2"
+      },
+      {
+        "id": "houseNumber",
+        "label": "House Number",
+        "type": "person attribute",
+        "uuid": "553bedc6-4e59-42d3-b80b-d3cf02a792bd"
+      },
+      {
+        "id": "mobiletelephoneNumber",
+        "label": "Mobile Telephone Number",
+        "type": "person attribute",
+        "uuid": "1794bcad-b2d2-47ae-8e26-1d4ec31ade13",
+        "validation": {
+          "matches": "^[0-9]{10}$"
         }
-      ],
-      "fieldConfigurations": {
-        "gender": [
+      },
+      {
+        "id": "obs-test-phoneNumber",
+        "label": "Obs-Test Phone number",
+        "type": "obs",
+        "uuid": "159635AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      },
+      {
+        "id": "obs-test-fullName",
+        "label": "Obs-Test Full name",
+        "type": "obs",
+        "uuid": "166103AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      },
+      {
+        "id": "obs-test-registrationDate",
+        "label": "Obs-Test Registration date",
+        "type": "obs",
+        "uuid": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      },
+      {
+        "id": "obs-test-gender",
+        "label": "Obs-Test Gender",
+        "type": "obs",
+        "uuid": "1533AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "customConceptAnswers": [
           {
-            "id": "male",
-            "value": "Male",
+            "uuid": "1534AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "label": "Male"
           },
           {
-            "id": "female",
-            "value": "Female",
+            "uuid": "1535AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "label": "Female"
           }
-        ],
-        "name": {
-          "allowUnidentifiedPatients": false
+        ]
       },
-      "dateOfBirth": {
-          "allowEstimatedDateOfBirth": true,
-          "useEstimatedDateOfBirth": {
-            "enabled": true,
-            "dayOfMonth": 10,
-            "month": 3
-          }
-        },
-        "address": {
-          "useAddressHierarchy": {
-            "enabled": true,
-            "useQuickSearch": true,
-            "searchAddressByLevel": true,
-            "useAddressHierarchyLabel": {
-              "country": "Country",
-              "state": "Region",
-              "district": "Zone/Sub-City",
-              "city": "Woreda"
-            }
-          }
+      {
+        "id": "hometelephoneNumber",
+        "label": "Home Telephone Number",
+        "type": "person attribute",
+        "uuid": "b3269e45-8e40-44a1-a5f2-bbb2765c6287",
+        "validation": {
+          "matches": "^[0-9]{10}$"
         }
       },
-      "defaultPatientIdentifierTypes": ["52c28db7-09fb-4d33-8f9f-4500347256b6", "d956f302-1723-4eca-9548-fb7e66706d34"],
-      "registrationObs": {
-        "encounterTypeUuid": "a0fde61e-f493-4f1f-b709-22aa94f72dc3"
+      {
+        "id": "worktelephoneNumber",
+        "label": "Work Telephone Number",
+        "type": "person attribute",
+        "uuid": "a69aae3d-8c79-4ac5-a218-88889f007163",
+        "validation": {
+          "matches": "^[0-9]{10}$"
+        }
       }
+    ],
+    "fieldConfigurations": {
+      "gender": [
+        {
+          "id": "male",
+          "value": "Male",
+          "label": "Male"
+        },
+        {
+          "id": "female",
+          "value": "Female",
+          "label": "Female"
+        }
+      ],
+      "name": {
+        "allowUnidentifiedPatients": false
+      },
+      "dateOfBirth": {
+        "allowEstimatedDateOfBirth": true,
+        "useEstimatedDateOfBirth": {
+          "enabled": true,
+          "dayOfMonth": 10,
+          "month": 3
+        }
+      },
+      "address": {
+        "useAddressHierarchy": {
+          "enabled": true,
+          "useQuickSearch": true,
+          "searchAddressByLevel": true,
+          "useAddressHierarchyLabel": {
+            "country": "Country",
+            "state": "Region",
+            "district": "Zone/Sub-City",
+            "city": "Woreda"
+          }
+        }
+      }
+    },
+    "defaultPatientIdentifierTypes": [
+      "52c28db7-09fb-4d33-8f9f-4500347256b6",
+      "d956f302-1723-4eca-9548-fb7e66706d34"
+    ],
+    "registrationObs": {
+      "encounterTypeUuid": "a0fde61e-f493-4f1f-b709-22aa94f72dc3"
     }
   }
+}
