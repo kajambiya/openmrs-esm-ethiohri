@@ -1,14 +1,12 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo } from "react";
 import {
-  OHRIFormFieldProps,
-  OHRIFormContext,
+  FormFieldProps,
+  FormContext,
   isTrue,
-  getConceptNameAndUUID,
   isInlineView,
-  fieldRequiredErrCode,
   isEmpty,
-  PreviousValueReview,
-  OHRIFieldValueView,
+  FieldValueView,
+  useFieldValidationResults,
 } from "@openmrs/openmrs-form-engine-lib";
 import styles from "../input/_input.scss";
 require("./ethiohri-date.scss");
@@ -22,11 +20,12 @@ import {
 
 const dateFormatter = new Intl.DateTimeFormat(window.navigator.language);
 
-const ETHIOHRIDate: React.FC<OHRIFormFieldProps> = ({
+const ETHIOHRIDate: React.FC<FormFieldProps> = ({
   question,
   onChange,
   handler,
   useField,
+  previousValue,
 }) => {
   const [field, meta] = useField(question.id);
   const {
@@ -35,29 +34,21 @@ const ETHIOHRIDate: React.FC<OHRIFormFieldProps> = ({
     layoutType,
     workspaceLayout,
     fields,
-  } = React.useContext(OHRIFormContext);
-  const [errors, setErrors] = useState([]);
-  const [warnings, setWarnings] = useState([]);
-  const [conceptName, setConceptName] = useState("Loading...");
-  const isFieldRequiredError = useMemo(
-    () => errors[0]?.errCode == fieldRequiredErrCode,
-    [errors]
-  );
-  const [previousValueForReview, setPreviousValueForReview] = useState(null);
+  } = React.useContext(FormContext);
 
-  useEffect(() => {
-    if (question["submission"]?.errors) {
-      setErrors(question["submission"]?.errors);
-    }
-  }, [question["submission"]]);
+  const { errors, warnings, setErrors, setWarnings } =
+    useFieldValidationResults(question);
 
   const isInline = useMemo(() => {
-    if (encounterContext.sessionMode == "view" || isTrue(question.readonly)) {
+    if (
+      ["view", "embedded-view"].includes(encounterContext.sessionMode) ||
+      isTrue(question.readonly)
+    ) {
       return isInlineView(
         question.inlineRendering,
         layoutType,
         workspaceLayout,
-        "view"
+        encounterContext.sessionMode
       );
     }
     return false;
@@ -70,7 +61,7 @@ const ETHIOHRIDate: React.FC<OHRIFormFieldProps> = ({
   ]);
 
   const onDateChange = ([date]) => {
-    var newDate = new Date(date);
+    let newDate = new Date(date);
     newDate.setHours(12);
     const refinedDate =
       date instanceof Date
@@ -84,6 +75,18 @@ const ETHIOHRIDate: React.FC<OHRIFormFieldProps> = ({
       encounterContext
     );
   };
+
+  useEffect(() => {
+    if (!isEmpty(previousValue)) {
+      const date = previousValue.value;
+      const refinedDate =
+        date instanceof Date ? new Date(date.setHours(0, 0, 0, 0)) : date;
+      setFieldValue(question.id, refinedDate);
+      onChange(question.id, refinedDate, setErrors, setWarnings);
+      handler?.handleFieldSubmission(question, refinedDate, encounterContext);
+    }
+  }, [previousValue]);
+
   const { placeHolder, carbonDateformat } = useMemo(() => {
     const formatObj = dateFormatter.formatToParts(new Date());
     const placeHolder = formatObj
@@ -116,36 +119,6 @@ const ETHIOHRIDate: React.FC<OHRIFormFieldProps> = ({
       .join("");
     return { placeHolder: placeHolder, carbonDateformat: carbonDateformat };
   }, []);
-
-  useEffect(() => {
-    if (
-      encounterContext?.previousEncounter &&
-      !isTrue(question.questionOptions.usePreviousValueDisabled)
-    ) {
-      const prevValue = handler.getPreviousValue(
-        question,
-        encounterContext?.previousEncounter,
-        fields
-      );
-      if (!isEmpty(prevValue?.value)) {
-        prevValue.display = gregToEth(
-          new Date(prevValue.value).toLocaleDateString("en-US").toString()
-        );
-        prevValue.value = [
-          new Date(prevValue.value).toLocaleDateString("en-US").toString(),
-        ];
-        setPreviousValueForReview(prevValue);
-      }
-    }
-  }, [encounterContext?.previousEncounter]);
-
-  useEffect(() => {
-    getConceptNameAndUUID(question.questionOptions.concept).then(
-      (conceptTooltip) => {
-        setConceptName(conceptTooltip);
-      }
-    );
-  }, [conceptName]);
 
   function gregToEth(gregdate) {
     if (!gregdate) return null;
@@ -195,13 +168,14 @@ const ETHIOHRIDate: React.FC<OHRIFormFieldProps> = ({
     });
   }
 
-  return encounterContext.sessionMode == "view" || isTrue(question.readonly) ? (
-    <OHRIFieldValueView
+  return encounterContext.sessionMode == "view" ||
+    encounterContext.sessionMode == "embedded-view" ? (
+    <FieldValueView
       label={question.label}
       value={gregToEth(
         new Date(field.value).toLocaleDateString("en-US").toString()
       )}
-      conceptName={conceptName}
+      conceptName={question.meta?.concept?.display}
       isInline={isInline}
     />
   ) : (
@@ -227,25 +201,14 @@ const ETHIOHRIDate: React.FC<OHRIFormFieldProps> = ({
               }}
               id={question.id}
               label={question.label}
-              isDisabled={question.disabled}
-              validationState={
-                isFieldRequiredError || errors.length > 0 ? "invalid" : null
-              }
+              // isDisabled={question.disabled}
+              validationState={errors.length > 0 ? "invalid" : null}
               errorMessage={errors[0]?.message}
               maxVisibleMonths={1}
               // maxValue={today("Africa/Addis_Ababa")}
             ></DatePicker>
           </Provider>
         </div>
-        {previousValueForReview && (
-          <div>
-            <PreviousValueReview
-              previousValue={previousValueForReview.value}
-              displayText={previousValueForReview.display}
-              setValue={onDateChange}
-            />
-          </div>
-        )}
       </div>
     )
   );

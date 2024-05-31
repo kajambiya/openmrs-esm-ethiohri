@@ -18,12 +18,12 @@
                     "isExpanded": "true",
                     "questions": [
                       {
-                          "label": "Elicited Date",
+                          "label": "Elicited Datezz",
                           "type": "obs",
                           "required": false,
                           "id": "elicitedDate",
                           "questionOptions": {
-                              "rendering": "date",
+                              "rendering": "eth-date",
                               "concept": "58abd286-8f57-4717-aa41-efd8e93d5902",
                               "conceptMappings": [],
                               "answers": []
